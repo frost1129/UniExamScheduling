@@ -1,0 +1,6 @@
+.calendar table {
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    border-spacing: 0;
+    border-collapse: separate;
+}

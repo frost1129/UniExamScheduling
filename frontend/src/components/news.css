@@ -1,0 +1,19 @@
+.thumb {
+    width: 100%;
+}
+
+.news-md {
+    max-height: 100px;
+}
+
+.thumb-container {
+    overflow: hidden;
+}
+
+.thumb-container img {
+    transition: 0.5s all ease-in-out;
+}
+
+.thumb-container:hover img {
+    transform: scale(1.25);
+}
