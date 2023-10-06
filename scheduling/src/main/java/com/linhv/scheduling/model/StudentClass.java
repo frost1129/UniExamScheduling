@@ -22,4 +22,12 @@ public class StudentClass {
     @ManyToOne
     @JoinColumn(name = "class_year")
     private ClassYear classYear;
+
+    @ManyToOne
+    @JoinColumn(name = "faculty")
+    private Faculty faculty;
+
+    @ManyToOne
+    @JoinColumn(name = "admission_type")
+    private AdmissionType admissionType;
 }

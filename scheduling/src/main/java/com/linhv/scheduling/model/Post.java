@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.Date;
 
 @Entity
 @Table(name = "post")
@@ -13,22 +16,27 @@ import lombok.NoArgsConstructor;
 public class Post {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private String id;
 
     @Column(name = "title")
     private String title;
 
-    @Column(name = "image")
+    @Column(name = "updated_date")
+    private Date updatedDate;
+
+    @Column(name = "image", columnDefinition = "TEXT")
     private String image;
+
+    @Transient
+    private MultipartFile imageFile;
 
     @Column(name = "content", columnDefinition = "TEXT")
     private String content;
 
     @ManyToOne
     @JoinColumn(name = "admin_id")
-    private Admin admin;
+    private User admin;
 
     @ManyToOne
     @JoinColumn(name = "admission_type")

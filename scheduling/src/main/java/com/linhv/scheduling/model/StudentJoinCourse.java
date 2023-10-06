@@ -27,7 +27,7 @@ public class StudentJoinCourse {
 
     @ManyToOne
     @JoinColumn(name = "student")
-    private Student student;
+    private User student;
 
     @ManyToOne
     @JoinColumn(name = "course_schedule")

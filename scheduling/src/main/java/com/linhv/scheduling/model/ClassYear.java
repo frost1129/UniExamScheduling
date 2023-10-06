@@ -19,16 +19,4 @@ public class ClassYear {
 
     @Column(name = "note", columnDefinition = "TEXT")
     private String note;
-
-    @ManyToOne
-    @JoinColumn(name = "faculty")
-    private Faculty faculty;
-
-    @ManyToOne
-    @JoinColumn(name = "admission_type")
-    private AdmissionType admissionType;
-
-    @ManyToOne
-    @JoinColumn(name = "career")
-    private Career career;
 }

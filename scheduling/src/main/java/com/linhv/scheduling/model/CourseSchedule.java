@@ -46,7 +46,7 @@ public class CourseSchedule {
 
     @ManyToOne
     @JoinColumn(name = "teacher")
-    private Teacher teacher;
+    private User teacher;
 
     @OneToOne(mappedBy = "courseSchedule")
     private ScheduledExam scheduledExam;

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name = "account")
@@ -13,12 +14,20 @@ import lombok.NoArgsConstructor;
 public class Account {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
     @Column(name = "password")
     private String password;
+
+    @Transient
+    private String confPassword;
+
+    @Column(name = "image", columnDefinition = "TEXT")
+    private String image;
+
+    @Transient
+    private MultipartFile imageFile;
 
     @Column(name = "status")
     private String status;
