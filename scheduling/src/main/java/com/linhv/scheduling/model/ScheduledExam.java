@@ -19,11 +19,12 @@ public class ScheduledExam {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "start_session")
-    private int startSession;
-
     @Column(name = "exam_date")
     private Date examDate;
+
+    @ManyToOne()
+    @JoinColumn(name = "time_slot")
+    private TimeSlot timeSlot;
 
     @OneToOne
     @JoinColumn(name = "scheduleId")

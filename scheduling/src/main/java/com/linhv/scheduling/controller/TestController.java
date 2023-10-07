@@ -23,15 +23,12 @@ public class TestController {
 
     @GetMapping("/")
     public String index() {
-//        User newU = new User("admin@ou.edu.vn", "Linh", "Vũ", new Date(2002, Calendar.NOVEMBER, 29), User.FEMALE, User.ADMIN, facultyRepo.getReferenceById(2L));
-//        System.out.println(userService.createUser(newU));
-
         return "Hello world!";
     }
 
     @GetMapping("/import")
     public String importCsv() {
-        String filePath = "src/main/resources/datas/teachers.csv";
+        String filePath = "src/main/resources/datas/students.csv";
         userService.importUserFromCsv(filePath);
         return "imported";
     }

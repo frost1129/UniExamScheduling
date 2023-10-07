@@ -1,4 +1,4 @@
 package com.linhv.scheduling.service;
 
-public interface ClassYearService {
+public interface TimeSlotService {
 }

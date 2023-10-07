@@ -23,6 +23,7 @@ public class Post {
     private String title;
 
     @Column(name = "updated_date")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date updatedDate;
 
     @Column(name = "image", columnDefinition = "TEXT")

@@ -1,7 +1,6 @@
 package com.linhv.scheduling.service.impl;
 
 import com.linhv.scheduling.model.Faculty;
-import com.linhv.scheduling.model.StudentClass;
 import com.linhv.scheduling.model.User;
 import com.linhv.scheduling.repository.UserRepository;
 import com.linhv.scheduling.service.FacultyService;
@@ -73,13 +72,7 @@ public class UserServiceImpl implements UserService {
                 String facultyId = csvRecord.get("faculty");
                 Faculty faculty = facultyService.getById(Long.parseLong(facultyId));
 
-                String studentClassId = csvRecord.get("studentClass");
-                StudentClass studentClass = null;
-                if (studentClassId != null && !studentClassId.trim().isEmpty()) {
-                    studentClassId = null;
-                }
-
-                User user = this.createUser(new User(email, firstName, lastName, dob, gender, role, faculty, studentClass));
+                this.createUser(new User(email, firstName, lastName, dob, gender, role, faculty));
             }
 
             csvParser.close();

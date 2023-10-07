@@ -61,10 +61,6 @@ public class User {
     @JoinColumn(name = "faculty")
     private Faculty faculty;
 
-    @ManyToOne
-    @JoinColumn(name = "student_class")
-    private StudentClass studentClass;
-
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private Account account;
@@ -77,16 +73,5 @@ public class User {
         this.gender = gender;
         this.role = role;
         this.faculty = faculty;
-    }
-
-    public User(String email, String firstName, String lastName, Date dob, String gender, String role, Faculty faculty, StudentClass studentClass) {
-        this.email = email;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.dob = dob;
-        this.gender = gender;
-        this.role = role;
-        this.faculty = faculty;
-        this.studentClass = studentClass;
     }
 }
