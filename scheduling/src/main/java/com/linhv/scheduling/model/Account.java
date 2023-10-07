@@ -13,6 +13,9 @@ import org.springframework.web.multipart.MultipartFile;
 @AllArgsConstructor
 public class Account {
 
+    public static final String ACTIVE = "ACTIVE";
+    public static final String LOCK = "LOCK";
+
     @Id
     @Column(name = "id")
     private Long id;

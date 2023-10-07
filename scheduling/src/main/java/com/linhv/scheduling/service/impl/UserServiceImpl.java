@@ -5,6 +5,7 @@ import com.linhv.scheduling.model.User;
 import com.linhv.scheduling.repository.UserRepository;
 import com.linhv.scheduling.service.FacultyService;
 import com.linhv.scheduling.service.UserService;
+import jakarta.persistence.NoResultException;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
@@ -15,6 +16,8 @@ import java.io.FileReader;
 import java.io.Reader;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -24,6 +27,38 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private FacultyService facultyService;
+
+    @Override
+    public List<User> getAllUser() {
+        return userRepo.findAll();
+    }
+
+    @Override
+    public List<User> getAllTeacherByFacultyId(Long facultyId) {
+        Faculty faculty = facultyService.getById(facultyId);
+        return userRepo.findByFacultyAndRole(faculty, User.TEACHER);
+    }
+
+    @Override
+    public List<User> getAllStudentByFacultyId(Long facultyId) {
+        Faculty faculty = facultyService.getById(facultyId);
+        return userRepo.findByFacultyAndRole(faculty, User.STUDENT);
+    }
+
+    @Override
+    public User getUserById(Long id) {
+        return userRepo.findById(id).get();
+    }
+
+    @Override
+    public User getUserByEmail(String email) {
+        return userRepo.findUserByEmail(email);
+    }
+
+    @Override
+    public List<User> getAllStudentByCourseAndYearCode(String course, int yearCode) {
+        return null;
+    }
 
     @Override
     public User createUser(User u) {
@@ -79,6 +114,22 @@ public class UserServiceImpl implements UserService {
             reader.close();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    public User updateUser(Long id, User newUserData) {
+        return null;
+    }
+
+    @Override
+    public boolean deleteUser(Long id) {
+        try {
+            User user = userRepo.findById(id).get();
+            userRepo.delete(user);
+            return true;
+        } catch (NoSuchElementException ex) {
+            return false;
         }
     }
 }
