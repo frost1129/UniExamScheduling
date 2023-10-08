@@ -8,6 +8,6 @@ import java.util.List;
 
 @Repository
 public interface PostRepository extends JpaRepository<Post, String> {
-    List<Post> findTop5();
+    List<Post> findTop5ByOrderByUpdatedDateDesc();
     List<Post> findByAdmin_Id(Long adminId);
 }

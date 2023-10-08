@@ -23,7 +23,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public List<Post> getTop5() {
-        return postRepo.findTop5();
+        return postRepo.findTop5ByOrderByUpdatedDateDesc();
     }
 
     @Override

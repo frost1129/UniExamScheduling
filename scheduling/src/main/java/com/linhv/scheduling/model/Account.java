@@ -26,6 +26,9 @@ public class Account {
     @Transient
     private String confPassword;
 
+    @Column(name = "role")
+    private String role;
+
     @Column(name = "image", columnDefinition = "TEXT")
     private String image;
 
