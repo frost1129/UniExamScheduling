@@ -13,7 +13,7 @@ import java.util.NoSuchElementException;
 public class CourseServiceImpl implements CourseService {
 
     @Autowired
-    CourseRepository courseRepo;
+    private CourseRepository courseRepo;
 
     @Override
     public List<Course> getAll() {

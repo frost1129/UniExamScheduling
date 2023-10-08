@@ -13,7 +13,7 @@ import java.util.NoSuchElementException;
 public class TimeSlotServiceImpl implements TimeSlotService {
 
     @Autowired
-    TimeSlotRepository slotRepo;
+    private TimeSlotRepository slotRepo;
 
     @Override
     public List<TimeSlot> getAll() {

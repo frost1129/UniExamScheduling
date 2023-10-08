@@ -20,16 +20,16 @@ import java.util.NoSuchElementException;
 public class CourseScheduleServiceImpl implements CourseScheduleService {
 
     @Autowired
-    CourseScheduleRepository scheduleRepo;
+    private CourseScheduleRepository scheduleRepo;
 
     @Autowired
-    FacultyService facultyService;
+    private FacultyService facultyService;
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Autowired
-    CourseService courseService;
+    private CourseService courseService;
 
     @Override
     public CourseSchedule getById(String id) {

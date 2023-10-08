@@ -12,7 +12,7 @@ import java.util.NoSuchElementException;
 public class AccountServiceImpl implements AccountService {
 
     @Autowired
-    AccountRepository accountRepo;
+    private AccountRepository accountRepo;
 
     @Override
     public Account getById(Long id) {

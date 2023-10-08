@@ -22,10 +22,10 @@ import java.util.logging.Logger;
 public class PostServiceImpl implements PostService {
 
     @Autowired
-    PostRepository postRepo;
+    private PostRepository postRepo;
 
     @Autowired
-    Cloudinary cloudinary;
+    private Cloudinary cloudinary;
 
     private Slugify slg = Slugify.builder().build();
 

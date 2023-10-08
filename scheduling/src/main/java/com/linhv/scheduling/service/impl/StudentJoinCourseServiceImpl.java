@@ -13,7 +13,7 @@ import java.util.NoSuchElementException;
 public class StudentJoinCourseServiceImpl implements StudentJoinCourseService {
 
     @Autowired
-    StudentJoinCourseRepository joinRepo;
+    private StudentJoinCourseRepository joinRepo;
 
     @Override
     public StudentJoinCourse getById(Long id) {

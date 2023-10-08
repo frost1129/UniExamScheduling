@@ -13,7 +13,7 @@ import java.util.NoSuchElementException;
 public class AdmissionTypeServiceImpl implements AdmissionTypeService {
 
     @Autowired
-    AdmissionTypeRepository typeRepo;
+    private AdmissionTypeRepository typeRepo;
 
     @Override
     public AdmissionType getById(Long id) {

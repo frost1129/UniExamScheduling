@@ -16,10 +16,10 @@ import java.util.NoSuchElementException;
 public class ScheduledExamServiceImpl implements ScheduledExamService {
 
     @Autowired
-    ScheduledExamRepository examRepo;
+    private ScheduledExamRepository examRepo;
 
     @Autowired
-    CourseService courseService;
+    private CourseService courseService;
 
     @Override
     public ScheduledExam getExamById(Long id) {
