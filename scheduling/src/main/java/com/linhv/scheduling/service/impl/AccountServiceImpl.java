@@ -1,12 +1,23 @@
 package com.linhv.scheduling.service.impl;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import com.linhv.scheduling.model.Account;
+import com.linhv.scheduling.model.Post;
+import com.linhv.scheduling.model.User;
 import com.linhv.scheduling.repository.AccountRepository;
 import com.linhv.scheduling.service.AccountService;
+import com.linhv.scheduling.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Service
 public class AccountServiceImpl implements AccountService {
@@ -14,19 +25,68 @@ public class AccountServiceImpl implements AccountService {
     @Autowired
     private AccountRepository accountRepo;
 
+    @Autowired
+    private Cloudinary cloudinary;
+
     @Override
     public Account getById(Long id) {
         return accountRepo.findById(id).get();
     }
 
     @Override
-    public Account newAccount(Account account) {
-        return accountRepo.save(account);
+    public Account newAccount(User user) {
+        Account account = new Account();
+
+        account.setRole(user.getRole());
+        account.setStatus(Account.ACTIVE);
+        account.setPassword(Account.DEFAULT_PASSWORD);
+        account.setImage(Account.DEFAULT_IMAGE);
+
+        account.setUser(user);
+
+        return this.accountRepo.save(account);
     }
 
     @Override
-    public Account updateAccount(Long id, Account account) {
-        return null;
+    public boolean updatePassword(Long id, String password) {
+        try {
+            Account curAcc = this.getById(id);
+            curAcc.setPassword(password);
+            this.accountRepo.save(curAcc);
+            return true;
+        } catch (NoSuchElementException ex) {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean updateImage(Long id, MultipartFile imageFile) {
+        try {
+            Account curAcc = this.getById(id);
+            Map res = this.cloudinary.uploader().upload(imageFile.getBytes(), ObjectUtils.asMap("resource_type", "auto"));
+            curAcc.setImage(res.get("secure_url").toString());
+            return true;
+        } catch (NoSuchElementException ex) {
+            Logger.getLogger(PostServiceImpl.class.getName()).log(Level.SEVERE, "Không tồn tại account với id này", ex);
+            return false;
+        } catch (IOException ex) {
+            Logger.getLogger(PostServiceImpl.class.getName()).log(Level.SEVERE, "IO Exception", ex);
+            return false;
+        }
+    }
+
+    @Override
+    public void lockAccount(Long id) {
+        Account account = this.getById(id);
+        if (Objects.equals(account.getStatus(), Account.ACTIVE))
+            account.setStatus(Account.LOCK);
+    }
+
+    @Override
+    public void unlockAccount(Long id) {
+        Account account = this.getById(id);
+        if (Objects.equals(account.getStatus(), Account.LOCK))
+            account.setStatus(Account.ACTIVE);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.linhv.scheduling.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,6 +16,9 @@ public class Account {
 
     public static final String ACTIVE = "ACTIVE";
     public static final String LOCK = "LOCK";
+
+    public static final String DEFAULT_PASSWORD = "123456";
+    public static final String DEFAULT_IMAGE = "https://res.cloudinary.com/dbh8vdpi7/image/upload/v1696798063/user-profile-interface-sign-symbol-icon-3d-rendering_rkjccs.jpg";
 
     @Id
     @Column(name = "id")
@@ -41,5 +45,6 @@ public class Account {
     @OneToOne
     @MapsId
     @JoinColumn(name = "id")
+    @JsonBackReference
     private User user;
 }

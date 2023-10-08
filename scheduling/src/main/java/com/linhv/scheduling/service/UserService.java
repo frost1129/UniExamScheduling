@@ -18,6 +18,9 @@ public interface UserService {
     User createUser(User u);
     void importUserFromCsv(String filePath);
 
+    void createAccountIfNotExists(User u);
+    void processUsersWithoutAccount();
+
 //    UPDATE
     User updateUser(Long id, User newUserData);
 

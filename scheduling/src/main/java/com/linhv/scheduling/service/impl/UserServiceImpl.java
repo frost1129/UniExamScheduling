@@ -1,8 +1,10 @@
 package com.linhv.scheduling.service.impl;
 
+import com.linhv.scheduling.model.Account;
 import com.linhv.scheduling.model.Faculty;
 import com.linhv.scheduling.model.User;
 import com.linhv.scheduling.repository.UserRepository;
+import com.linhv.scheduling.service.AccountService;
 import com.linhv.scheduling.service.FacultyService;
 import com.linhv.scheduling.service.UserService;
 import jakarta.persistence.NoResultException;
@@ -27,6 +29,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private FacultyService facultyService;
+
+    @Autowired
+    private AccountService accountService;
 
     @Override
     public List<User> getAllUser() {
@@ -87,7 +92,9 @@ public class UserServiceImpl implements UserService {
         u.setId(userId);
         u.setSequenceNum(sequence);
 
-        return userRepo.save(u);
+        this.accountService.newAccount(u);
+
+        return this.userRepo.save(u);
     }
 
     @Override
@@ -110,10 +117,26 @@ public class UserServiceImpl implements UserService {
                 this.createUser(new User(email, firstName, lastName, dob, gender, role, faculty));
             }
 
+            this.processUsersWithoutAccount();
+
             csvParser.close();
             reader.close();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void createAccountIfNotExists(User u) {
+        if (u.getAccount() == null)
+            this.accountService.newAccount(u);
+    }
+
+    @Override
+    public void processUsersWithoutAccount() {
+        List<User> users = this.userRepo.findAll();
+        for (User user : users) {
+            this.createAccountIfNotExists(user);
         }
     }
 

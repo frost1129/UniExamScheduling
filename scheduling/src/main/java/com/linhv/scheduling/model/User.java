@@ -1,5 +1,6 @@
 package com.linhv.scheduling.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -63,6 +64,7 @@ public class User {
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
+    @JsonManagedReference
     private Account account;
 
     public User(String email, String firstName, String lastName, Date dob, String gender, String role, Faculty faculty) {

@@ -1,6 +1,8 @@
 package com.linhv.scheduling.service;
 
 import com.linhv.scheduling.model.Account;
+import com.linhv.scheduling.model.User;
+import org.springframework.web.multipart.MultipartFile;
 
 public interface AccountService {
 
@@ -8,10 +10,13 @@ public interface AccountService {
     Account getById(Long id);
 
 //    CREATE
-    Account newAccount(Account account);
+    Account newAccount(User user);
 
 //    UPDATE
-    Account updateAccount(Long id, Account account);
+    boolean updatePassword(Long id, String password);
+    boolean updateImage(Long id, MultipartFile imageFile);
+    void lockAccount(Long id);
+    void unlockAccount(Long id);
 
 //    DELETE
     boolean deleteAccount(Long id);
