@@ -23,5 +23,5 @@ public class Course {
     private String name;
 
     @Column(name = "credit")
-    private int credit;
+    private float credit;
 }

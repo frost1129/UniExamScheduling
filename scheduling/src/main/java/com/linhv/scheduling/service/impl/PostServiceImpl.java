@@ -85,7 +85,7 @@ public class PostServiceImpl implements PostService {
     }
 
     private void uploadImage(Post post, Post toUpdatePost) {
-        if (!post.getImageFile().isEmpty()) {
+        if (post.getImageFile() != null && !post.getImageFile().isEmpty()) {
             try {
                 Map res = this.cloudinary.uploader().upload(post.getImageFile().getBytes(), ObjectUtils.asMap("resource_type", "auto"));
                 toUpdatePost.setImage(res.get("secure_url").toString());

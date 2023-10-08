@@ -2,6 +2,7 @@ package com.linhv.scheduling.controller;
 
 import com.linhv.scheduling.model.User;
 import com.linhv.scheduling.repository.FacultyRepository;
+import com.linhv.scheduling.service.CourseService;
 import com.linhv.scheduling.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,6 +23,9 @@ public class TestController {
     @Autowired
     FacultyRepository facultyRepo;
 
+    @Autowired
+    CourseService courseService;
+
     @GetMapping("/")
     public String index() {
         return "Hello world!";
@@ -29,8 +33,9 @@ public class TestController {
 
     @GetMapping("/import")
     public String importCsv() {
-        String filePath = "src/main/resources/datas/students.csv";
-        userService.importUserFromCsv(filePath);
+        String filePath = "src/main/resources/datas/courses.csv";
+//        userService.importUserFromCsv(filePath);
+        courseService.importCourseFromCsv(filePath);
         return "imported";
     }
 

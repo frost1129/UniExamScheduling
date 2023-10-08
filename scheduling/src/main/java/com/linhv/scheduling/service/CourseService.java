@@ -12,6 +12,7 @@ public interface CourseService {
 
 //    CREATE
     Course newCourse(Course course);
+    void importCourseFromCsv(String filePath);
 
 //    UPDATE
     Course updateCourse(String id, Course course);

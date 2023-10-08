@@ -1,0 +1,348 @@
+id, name, credit
+_GENG001,Tiếng anh cấp độ 1,3
+_GENG002,Tiếng anh cấp độ 2,3
+ACCO1305,Kinh doanh và nghiệp vụ,3
+ACCO1306,Kinh doanh và nghiệp vụ (TA),3
+ACCO1325,Nguyên lý kế toán,3
+ACCO1328,Logic học,3
+ACCO1330,Kế toán quản trị,3
+ACCO1334,Kế toán tài chính 2,3
+ACCO1339,Hệ thống thông tin kế toán 1,3
+ACCO1349,Kiểm toán thực hành,3
+ACCO2311,Kế toán thuế 1,3
+ACCO3302,Kiểm toán 1,3
+ACCO5301,Nguyên lý kế toán,3
+ACCO5307,Kiểm toán 1 (TA),3
+ACCO5319,Kế toán quản trị căn bản 2 (TA),3
+ACCO5340,Kinh doanh và nghiệp vụ,3
+ACCO6304,Kế toán tài chính 4,3
+ACCO6314,Kiểm toán thực hành,3
+ACCO6340,Kế toán tài chính 1,3
+BADM1186,Quản trị bản thân,1
+BADM1197,Tư duy phản biện và sáng tạo,1
+BADM1301,Quản trị học,3
+BADM1364,Quản trị học,3
+BADM1365,Phân tích định lượng trong quản trị,3
+BADM1366,Quản trị nhân lực,3
+BADM1367,Quản trị Marketing,3
+BADM1373,Thương mại điện tử,3
+BADM1377,Thống kê ứng dụng,3
+BADM1379,Quản trị dự án,3
+BADM1380,Quản trị chiến lược,3
+BADM1392,Quản trị vận hành,3
+BADM2117,Thông minh cảm xúc và tư duy tích cực,1
+BADM2188,Giá trị sống 1,1
+BADM2311,Giao tiếp trong kinh doanh,3
+BADM2327,Trách nhiệm xã hội của doanh nghiệp,3
+BADM2331,Phát triển sản phẩm mới,3
+BADM2348,Vận tải và bảo hiểm,3
+BADM2350,Quản trị kênh phân phối,3
+BADM2368,Quản trị thu mua,3
+BADM2370,Quản trị Logistics,3
+BADM2372,Dự báo trong kinh doanh,3
+BADM2374,Tuyến điểm du lịch Việt Nam,3
+BADM2375,Quản trị kinh doanh lữ hành,3
+BADM2381,Quản trị xuất nhập khẩu,3
+BADM2382,Đầu tư quốc tế,3
+BADM2383,Marketing quốc tế,3
+BADM2384,Quản trị thương hiệu,3
+BADM5103,Giá trị sống 1,1
+BADM5106,Nhận diện bản thân,1
+BADM5301,Quản trị học,3
+BADM5302,Giao tiếp trong kinh doanh,3
+BADM5304,Quản trị nhân lực,3
+BADM5307,Trách nhiệm xã hội của doanh nghiệp,3
+BADM5310,Quản trị thương hiệu,3
+BADM5317,Hành vi khách hàng,3
+BADM5323,Quan hệ công chúng,3
+BADM5329,Kinh doanh quốc tế,3
+BADM5330,Quản trị kinh doanh quốc tế,3
+BADM5332,Quản trị xuất nhập khẩu,3
+BADM5335,Marketing căn bản,3
+BADM5355,Giao tiếp trong kinh doanh,3
+BADM5356,Thống kê ứng dụng,3
+BADM6103,Giá trị sống 1,1
+BADM6104,Giá trị sống 2,1
+BADM6303,Thương mại điện tử,3
+BADM6321,Quản trị học,3
+BADM6340,Giao tiếp trong kinh doanh,3
+BADM6341,Thống kê ứng dụng,3
+BIOT1201,Sinh học đại cương,2
+BIOT1347,Con người và môi trường ,3
+BIOT1347,Con người và môi trường,3
+BIOT1348,Công nghệ tế bào,3
+BIOT2201,Sinh học phân tử,2
+BIOT2402,Công nghệ protein-enzyme,3
+BIOT2403,Công nghệ vi sinh,3
+BIOT2404,Di truyền học,3
+BIOT2406,Sinh lý động vật,3
+BIOT3224,Dinh dưỡng người,2
+BIOT5302,Sinh hóa học,3
+BLAW1203,Luật hôn nhân gia đình,2
+BLAW1205,Luật ngân sách Nhà nước (Luật TC),2
+BLAW1210,Phá sản và giải quyết tranh chấp,2
+BLAW1218,Luật Công ty,2
+BLAW1222,Luật Tố tụng hình sự,2
+BLAW1228,Kỹ năng soạn thảo văn bản,2
+BLAW1229,Kỹ năng viết và nghiên cứu pháp lý,2
+BLAW1301,Lý luận Nhà nước và pháp luật,3
+BLAW1309,Tư duy phản biện,3
+BLAW1317,Luật Lao động,3
+BLAW1323,Pháp luật về các loại hình thương nhân,3
+BLAW1324,Luật Đất đai,3
+BLAW2203,Luật ngân hàng,2
+BLAW2301,Luật hiến pháp,3
+BLAW2305,Luật hình sự,3
+BLAW2306,Luật dân sự 2,3
+BLAW2319,Luật thương mại quốc tế,3
+BLAW2330,Luật thuế,3
+BLAW2332,Luật cạnh tranh,3
+BLAW3301,Công pháp quốc tế (KI),3
+BLAW3311,Kỹ năng soạn thảo hợp đồng,3
+BLAW4201,Luật học so sánh,2
+BLAW4202,Pháp luật về xuất nhập khẩu,2
+CENG1123,Đồ án kết cấu Bê tông cốt thép 1,1
+CENG1202,Nhận thức ngành (TT NT ngành),1
+CENG1217,Kiến trúc dân dụng,2
+CENG1327,Kỹ thuật thi công,3
+CENG1330,Thiết kế nhà nhiều tầng,3
+CENG2203,Trắc địa đại cương,2
+CENG2205,Sức bền vật liệu 2,2
+CENG2206,Thí nghiệm Sức bền vật liệu,1
+CENG2212,Phương pháp phần tử hữu hạn,2
+CENG2319,Kinh tế xây dựng,3
+CENG3211,Kết cấu Bê tông cốt thép 2,2
+CENG3212,Kết cấu thép 2,2
+CENG3305,Quản lý dự án xây dựng,3
+CENG4205,Đồ án thi công,1
+CHEM1303,Hóa đại cương,3
+CHEM1305,Hóa học thực phẩm,3
+CHIN1201,Kỹ năng nghe hiểu 1,2
+CHIN1202,Kỹ năng nói 1,2
+CHIN1203,Kỹ năng đọc 1,2
+CHIN1242,Ngữ âm - Văn tự Hán ngữ,2
+CHIN1254,Khẩu ngữ nâng cao,2
+CHIN1313,Tiếng Trung Quốc tổng hợp 1,3
+CHIN1325,Tiếng Trung Quốc tổng hợp 4,3
+CHIN1329,Kỹ năng nghe hiểu 3,3
+CHIN1333,Kỹ năng nói 4,3
+CHIN1336,Kỹ năng đọc 4,3
+CHIN1338,Kỹ năng viết 2,3
+CHIN1339,Kỹ năng viết 3,3
+CHIN1340,Kỹ năng viết 4,3
+CHIN1346,Dịch du lịch,3
+CHIN2310,Giao tiếp thương mại,3
+CHIN3210,Dịch Khẩu ngữ,2
+CHIN3211,Dịch Văn học,2
+CHIN3304,Lược sử Văn học Trung Quốc,3
+CHIN4303,Thư tín thương mại,3
+CMAN1122,Đồ án Quản lý dự án xây dựng,1
+CMAN3206,Đấu thầu và hợp đồng trong xây dựng,2
+CMAN3304,Dự toán xây dựng,2
+CMAN4211,Tin học ứng dụng trong quản lý xây dựng,2
+CMAN4302,Lập và thẩm định dự án Đầu tư xây dựng,3
+COMP1307,Tin học đại cương,3
+COMP1310,Tin học văn phòng nâng cao,3
+COMP2403,Tin học ứng dụng,3
+COMP3401,UD tin học trong CNSH,3
+DATS1301,Nhập môn tin học cho Khoa học dữ liệu,3
+DATS2304,Trực quan hóa dữ liệu,3
+DEDU0103,Giáo dục quốc phòng và an ninh: Quân sự chung,1
+DEDU0202,Giáo dục quốc phòng và an ninh: Công tác quốc phòng và an ninh,2
+DEDU0204,Giáo dục quốc phòng và an ninh: Kỹ thuật chiến đấu bộ binh và chiến thuật,2
+DEDU0301,Giáo dục quốc phòng và an ninh: Đường lối quốc phòng và an ninh của Đảng Cộng sản Việt Nam,3
+ECON1301,Kinh tế vi mô,3
+ECON1318,Nguyên lý thống kê kinh tế,3
+ECON1320,Kinh tế vi mô nâng cao,3
+ECON1322,Kinh tế lượng nâng cao,3
+ECON2315,Kinh tế lượng trong tài chính,3
+ECON2323,Kinh tế quốc tế,3
+ECON2324,Kinh tế phát triển,3
+ECON2327,Dự báo trong kinh doanh và kinh tế,3
+ECON2331,Chính sách ngoại thương và công nghiệp,3
+EDUC1301,Định hướng và kỹ năng học tập,3
+EDUC1314,Phương pháp nghiên cứu khoa học,3
+ENGL1104,Báo cáo chuyên đề kinh doanh thương mại,1
+ENGL1249,Kỹ năng thuyết trình,2
+ENGL1267,Quản lý lớp học,2
+ENGL1269,"Giảng dạy qua chuyện kể, kịch",2
+ENGL1278,Anh ngữ du lịch,2
+ENGL1280,Anh ngữ nhân dụng,2
+ENGL1281,Nghiệp vụ giao dịch ngân hàng,2
+ENGL1285,Giảng dạy tích hợp,2
+ENGL1301,Ngữ pháp,3
+ENGL1304,Nghe - Nói 1,3
+ENGL1315,Đọc - Viết 1,3
+ENGL1319,Luyện phát âm,3
+ENGL1333,Nghe - Nói 4,3
+ENGL1334,Luyện dịch 1,3
+ENGL1341,Đọc - Viết 4,3
+ENGL1360,Quản trị học,3
+ENGL1362,Nguyên lý kế toán,3
+ENGL1364,Quan hệ công chúng,3
+ENGL1365,Nghiệp vụ văn phòng,3
+ENGL1384,Tâm lý lứa tuổi,3
+ENGL2309,Văn hóa Anh - Mỹ,3
+ENGL3201,Ngữ âm - Âm vị học,2
+ENGL3205,Văn học Anh,2
+ENGL3307,Lịch sử các phương pháp giảng dạy tiếng Anh,3
+FINA1301,Tiền tệ và Ngân hàng,3
+FINA1328,Quản trị tài chính,3
+FINA1329,Tài chính doanh nghiệp 1,3
+FINA1330,Tài chính cá nhân,3
+FINA2337,Thị trường tài chính phái sinh,3
+FINA2338,Tài chính doanh nghiệp 2,3
+FINA2341,Quản lý danh mục đầu tư,3
+FINA2342,Ngân hàng đầu tư,3
+FINA2344,Marketing ngân hàng,3
+FINA3318,Thuế và hoạt động kinh doanh,3
+FINA5304,Tài chính doanh nghiệp 1,3
+FINA5305,Thị trường tài chính phái sinh,3
+FINA5308,Tài chính quốc tế,3
+FINA5318,Tài chính cá nhân,3
+FINA5324,Quản trị tài chính,3
+FINA6319,Marketing ngân hàng,3
+FOOD1301,Công nghệ bảo quản và chế biến sau thu hoạch,3
+FOOD1304,Đánh giá cảm quan thực phẩm,3
+FOOD2204,Phụ gia thực phẩm,2
+food2312,Thống kê ứng dụng trong công nghệ thực phẩm,3
+GCHI2303,Tiếng Trung 3,3
+GENG0311,Tiếng Anh căn bản 1,3
+GENG0312,Tiếng Anh căn bản 2,3
+GENG0313,Tiếng Anh căn bản 3,3
+GENG0314,Tiếng Anh căn bản 4,3
+GENG0315,Tiếng Anh căn bản 5,3
+GENG1311,Tiếng Anh nâng cao 1,3
+GENG1312,Tiếng Anh nâng cao 2,3
+GENG1313,Tiếng Anh nâng cao 3,3
+GENG1339,Tiếng Anh Nâng cao 1 (K2019),3
+GENG1340,Tiếng Anh Nâng cao 2 (K2019),3
+GENG1341,Tiếng Anh Nâng cao 3 (K2019),3
+GENG1342,Tiếng Anh Nâng cao 4 (K2019),3
+GENG1343,Tiếng Anh Nâng cao 5 (K2019),3
+GENG1344,Tiếng Anh Nâng cao 6 (K2019),3
+GENG1345,Tiếng Anh Nâng cao 7 (K2019),3
+GENG1346,Tiếng Anh Nâng cao 8 (K2019),3
+GENG1347,Tiếng Anh Nâng cao 9 (K2019),3
+GENG1348,Tiếng Anh Nâng cao 10 (K2019),3
+GJAP2303,Tiếng Nhật 3,3
+GLAW1223,Thực hành nghề nghiệp ngành Luật,2
+glaw1315,Pháp luật đại cương,3
+GLAW1318,Luật kinh doanh,3
+GLAW2205,Pháp luật đại cương trong hoạt động xây dựng,2
+GLAW2302,Pháp luật về các loại hình thương nhân và phá sản,3
+GLAW3208,Pháp luật về công chứng và chứng thực,2
+GLAW3303,Pháp luật cộng đồng ASEAN,3
+GLAW6301,Pháp luật đại cương,2
+IBUS3122,Văn hóa số,1
+IBUS3123,Công cụ quản lý thương mại,1
+IBUS3210,Quản trị quan hệ khách hàng,2
+IBUS3216,Thanh toán quốc tế,2
+IBUS3219,Nghiên cứu thị trường quốc tế,2
+IBUS3220,Quản trị Logistic,2
+IBUS3312,Tiếng Pháp,3
+IBUS3313,Tiếng Việt,3
+IBUS3315,Nghiệp vụ ngoại thương,3
+IBUS3317,Luật thương mại quốc tế,3
+IBUS3318,Kỹ thuật truyền thông,3
+IBUS3321,Marketing,3
+IBUS3325,Kết nối quốc tế 1,3
+IBUS3414,Kinh tế quốc tế,4
+IBUS3511,Tiếng Anh,5
+IBUS3624,Đồ án,6
+IBUS3809,Đàm phán quốc tế,8
+INDO2303,Tiếng Indonesia 3,3
+ITEC1328,Cấu trúc dữ liệu và thuật giải 2,3
+ITEC1401,Nhập môn tin học,3
+ITEC1505,Cơ sở lập trình,4
+ITEC2301,Hệ điều hành,3
+ITEC2502,Cơ sở dữ liệu (Nhập môn CSDL),4
+ITEC2503,Mạng máy tính (Nhập môn MMT),4
+ITEC2504,Lập trình hướng đối tượng,4
+ITEC3201,Kỹ năng nghề nghiệp,2
+ITEC3412,An toàn hệ thống thông tin,3
+ITEC5305,Ứng dụng web,3
+ITEC6301,Nhập môn tin học,3
+ITEC6304,Cấu trúc dữ liệu và thuật giải 2,3
+ITEC6305,Hệ điều hành,3
+ITEC6307,Cơ sở dữ liệu nâng cao,3
+ITEC6308,Lập trình cơ sở dữ liệu,3
+ITEC6311,Trí tuệ nhân tạo,3
+ITEC6401,Cơ sở lập trình,3
+JAPA0421,Thực hành Tiếng Nhật tổng hợp 1,3
+JAPA0422,Thực hành Tiếng Nhật tổng hợp 2,3
+JAPA1236,Văn học Nhật Bản,2
+JAPA1241,Biên dịch 2,2
+JAPA1243,Phiên dịch 2,2
+JAPA1255,Khẩu ngữ trong tiếng Nhật,2
+JAPA1256,Tiếng Nhật dùng trong IT,2
+JAPA1260,Biên dịch nâng cao,2
+JAPA1261,Phiên dịch nâng cao,2
+JAPA1262,"Tiếng Nhật dùng trong nhà hàng, khách sạn",2
+JAPA1310,Cơ sở ngôn ngữ học tiếng Nhật,3
+JAPA1321,Nghe - Nói IV,3
+JAPA1401,Tiếng Nhật tổng hợp I,4
+JAPA1403,Nghe - Nói I,4
+JAPA2209,Lý thuyết dịch,2
+JAPA2301,Ngữ pháp học tiếng Nhật 1,3
+JAPA3204,Kỹ năng viết 3,2
+JAPA3210,Kanji - Đọc hiểu III,2
+JAPA4211,Địa lý Nhật Bản,2
+KORE1310,Ngữ pháp – Viết tiếng Hàn cao cấp,3
+KORE1315,Nghe tiếng Hàn cao cấp,3
+KORE1318,Nói tiếng Hàn trung cấp 1,3
+KORE1323,Đọc tiếng Hàn trung cấp 1,3
+KORE1326,Ngữ pháp tiếng Hàn sơ cấp 1,3
+KORE1331,Nghe – Nói tiếng Hàn sơ cấp 1,3
+KORE1336,Viết tiếng Hàn sơ cấp 1,3
+KORE1341,Đọc tiếng Hàn sơ cấp 1,3
+KORE2201,Văn hóa Hàn Quốc,2
+KORE2202,Xã hội Hàn Quốc đương đại,2
+KORE2204,Ngữ nghĩa học tiếng Hàn,2
+KORE2306,Lý thuyết dịch,3
+MATH1313,Đại số tuyến tính,3
+MATH1314,Giải tích,3
+MATH1315,Xác suất và Thống kê,3
+MATH2401,Thống kê sinh học,3
+MATH5301,Giải tích,3
+MATH5304,Nguyên lý thống kê kinh tế,3
+MATH6301,Giải tích,3
+MATH6302,Đại số tuyến tính,3
+MATH6303,Xác suất và Thống kê,3
+PEDU0201,GDTC1-Thể dục Phát triển chung,1.5
+PEDU0202,GDTC 2 (TC) - Bóng chuyền,1.5
+PEDU0204,GDTC 2 (TC) - Cầu lông,1.5
+POLI1205,Kinh tế chính trị Mác - Lênin,2
+POLI1206,Chủ nghĩa xã hội khoa học,2
+POLI1207,Lịch sử Đảng Cộng sản Việt Nam,2
+POLI1208,Tư tưởng Hồ Chí Minh,2
+PSYC2301,Giải phẫu và sinh lý hoạt động thần kinh cấp cao,3
+SEAS1202,Dẫn nhập Đông Nam Á học,2
+SEAS1317,Lịch sử văn minh thế giới,3
+SEAS1336,Các tộc người ở Đông Nam Á,3
+SEAS2301,Kinh tế học đại cương,3
+SEAS2325,Thiết kế và điều hành tour,3
+SEAS3210,Các tổ chức quốc tế và khu vực ở Đông Nam Á,2
+SOCI1301,Xã hội học đại cương (NMXHH),3
+SOCI1316,Nhân học đại cương,3
+SOCI1317,Tâm lý học đại cương,3
+SOCI1319,Thống kê xã hội,3
+SOCI1320,Dẫn nhập phần mềm thống kê xã hội,3
+SOCI1321,Phương pháp trong nghiên cứu xã hội,3
+SOCI2324,Xã hội học gia đình và giới,3
+SOCI2327,Xã hội học tổ chức,3
+SOCI2329,Chính sách xã hội,3
+SOCI3201,Xã hội học lối sống,2
+SOCI3317,Xã hội học lao động,3
+SWOR1301,Công tác xã hội nhập môn,3
+SWOR2319,Công tác xã hội nhóm,3
+SWOR2320,Phát triển cộng đồng,3
+SWOR2322,Tham vấn cơ bản,3
+SWOR2324,CTXH với người khuyết tật,3
+SWOR2326,An sinh nhi đồng và gia đình,3
+SWOR2332,Tham vấn trẻ trong HC ĐBKK,3
+TECH1301,Vẽ kỹ thuật xây dựng,3
+TOUR1305,Du lịch bền vững,3
+TOUR1313,Các vùng văn hóa Việt Nam,3
+VIET1208,Thực hành văn bản tiếng Việt,2
+VIET6301,Đại cương văn hóa Việt Nam,3
