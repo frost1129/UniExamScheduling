@@ -1,11 +1,11 @@
 import axios from "axios";
 import cookie from "react-cookies";
 
-const SERVER_CONTEXT = "/scheduling";
+const SERVER_CONTEXT = "";
 const SERVER = "http://localhost:8080";
 
 export const endpoints = {
-    "info": `${SERVER_CONTEXT}/api/info/`,
+    "info": `${SERVER_CONTEXT}/api/mist/admissions/`,
 }
 
 export const authApi = () => {
