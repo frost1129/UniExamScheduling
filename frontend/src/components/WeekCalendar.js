@@ -10,7 +10,7 @@ const WeekCalendar = () => {
     const [year, setYear] = useState(2023);
 
     const [events, setEvents] = useState([
-            { name: 'Event 1', date: '10/10', session: '1' },
+        { name: 'Event 1', date: '10/10', session: '1' },
         { name: 'Event 1.5', date: '10/10', session: '1' },
         { name: 'Event 2', date: '11/10', session: '2' },
         // Thêm các sự kiện khác theo cùng định dạng
