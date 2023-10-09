@@ -9,17 +9,20 @@ import com.linhv.scheduling.repository.AccountRepository;
 import com.linhv.scheduling.service.AccountService;
 import com.linhv.scheduling.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Objects;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-@Service
+@Service("userDetailsService")
 public class AccountServiceImpl implements AccountService {
 
     @Autowired
@@ -28,9 +31,22 @@ public class AccountServiceImpl implements AccountService {
     @Autowired
     private Cloudinary cloudinary;
 
+    @Autowired
+    private BCryptPasswordEncoder encoder;
+
     @Override
     public Account getById(Long id) {
         return accountRepo.findById(id).get();
+    }
+
+    @Override
+    public boolean authAccount(Long id, String password) {
+        try {
+            Account account = this.getById(id);
+            return this.encoder.matches(password, account.getPassword());
+        } catch (NoSuchElementException ex) {
+            return false;
+        }
     }
 
     @Override
@@ -39,8 +55,9 @@ public class AccountServiceImpl implements AccountService {
 
         account.setRole(user.getRole());
         account.setStatus(Account.ACTIVE);
-        account.setPassword(Account.DEFAULT_PASSWORD);
         account.setImage(Account.DEFAULT_IMAGE);
+
+        account.setPassword(this.encoder.encode(Account.DEFAULT_PASSWORD));
 
         account.setUser(user);
 
@@ -51,7 +68,7 @@ public class AccountServiceImpl implements AccountService {
     public boolean updatePassword(Long id, String password) {
         try {
             Account curAcc = this.getById(id);
-            curAcc.setPassword(password);
+            curAcc.setPassword(this.encoder.encode(password));
             this.accountRepo.save(curAcc);
             return true;
         } catch (NoSuchElementException ex) {
@@ -98,5 +115,19 @@ public class AccountServiceImpl implements AccountService {
         } catch (NoSuchElementException ex) {
             return false;
         }
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Account user = this.getById(Long.parseLong(username));
+        if (user == null)
+            throw new UsernameNotFoundException(String.format("Không tồn tại người dùng với ID %s!", username));
+
+        Set<GrantedAuthority> authorities = new HashSet<>();
+        authorities.add(new SimpleGrantedAuthority(user.getRole()));
+
+        return new org.springframework.security.core.userdetails.User(
+                user.getId().toString(), user.getPassword(), authorities
+        );
     }
 }

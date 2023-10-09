@@ -1,6 +1,7 @@
 package com.linhv.scheduling.service;
 
 import com.linhv.scheduling.model.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
 

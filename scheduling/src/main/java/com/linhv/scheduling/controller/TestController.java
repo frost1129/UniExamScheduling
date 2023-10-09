@@ -38,6 +38,7 @@ public class TestController {
     @GetMapping("/import")
     public String importCsv() {
         String filePath = "src/main/resources/datas/courses.csv";
+        userService.processUsersWithoutAccount();
 //        userService.importUserFromCsv(filePath);
 //        courseService.importCourseFromCsv(filePath);
         return "imported";

@@ -2,12 +2,14 @@ package com.linhv.scheduling.service;
 
 import com.linhv.scheduling.model.Account;
 import com.linhv.scheduling.model.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.multipart.MultipartFile;
 
-public interface AccountService {
+public interface AccountService extends UserDetailsService {
 
 //    READ
     Account getById(Long id);
+    boolean authAccount(Long id, String password);
 
 //    CREATE
     Account newAccount(User user);
