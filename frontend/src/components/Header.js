@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { MyUserContext } from "../App";
 import UserDetail from "./UserDetail";
 import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
@@ -8,7 +8,6 @@ import logo from "../images/ou_logo_long.png";
 const Header = () => {
     const [user, dispatch] = useContext(MyUserContext);
     const [showUserDetail, setShowUserDetail] = useState(false);
-    const navigate = useNavigate();
     const location = useLocation();
 
     const handleShowUserDetail = () => {
@@ -57,6 +56,64 @@ const Header = () => {
                                     </Link>
                                 </Nav.Link>
 
+                                { user === null ? "" : 
+                                    user.role === "ROLE_ADMIN" ? 
+                                    <>
+                                    <Nav.Link>
+                                        <Link
+                                            to="/admin/posts"
+                                            className="text-decoration-none text-dark"
+                                        >
+                                            Quản lý bài đăng
+                                        </Link>
+                                    </Nav.Link>
+                                    <Nav.Link>
+                                        <Link
+                                            to="/admin/users"
+                                            className="text-decoration-none text-dark"
+                                        >
+                                            Quản lý người dùng
+                                        </Link>
+                                    </Nav.Link>
+                                    <Nav.Link>
+                                        <Link
+                                            to="/admin/schedules"
+                                            className="text-decoration-none text-dark"
+                                        >
+                                            Quản lý thời khóa biểu
+                                        </Link>
+                                    </Nav.Link>
+                                    <Nav.Link>
+                                        <Link
+                                            to="/admin/exams"
+                                            className="text-decoration-none text-dark"
+                                        >
+                                            Quản lý lịch thi
+                                        </Link>
+                                    </Nav.Link>
+                                    </>
+                                    :
+                                    <>
+                                    <Nav.Link>
+                                        <Link
+                                            to="/schedules"
+                                            className="text-decoration-none text-dark"
+                                        >
+                                            Thời khóa biểu
+                                        </Link>
+                                    </Nav.Link>
+                                    <Nav.Link>
+                                        <Link
+                                            to="/exams"
+                                            className="text-decoration-none text-dark"
+                                        >
+                                            Lịch thi
+                                        </Link>
+                                    </Nav.Link>
+                                    </>
+                                }
+                                
+
                                 {user === null ? (
                                     <Link
                                         to="/login"
@@ -78,32 +135,14 @@ const Header = () => {
                                                 Thông tin tài khoản
                                             </Link>
                                         </NavDropdown.Item>
-                                        {/* <NavDropdown.Item>
-                                          <Link to='/admin' className="text-decoration-none text-dark">
-                                              Bảng điều khiển
-                                          </Link>
-                                      </NavDropdown.Item> */}
                                         <NavDropdown.Item>
                                             <Link
-                                                to="/question-manage"
+                                                onClick={logout}
                                                 className="text-decoration-none text-dark"
                                             >
-                                                Xem lịch thi
+                                                Đăng xuất
                                             </Link>
                                         </NavDropdown.Item>
-                                        {location.pathname !==
-                                        "/question-manage" ? (
-                                            <NavDropdown.Item>
-                                                <Link
-                                                    onClick={logout}
-                                                    className="text-decoration-none text-dark"
-                                                >
-                                                    Đăng xuất
-                                                </Link>
-                                            </NavDropdown.Item>
-                                        ) : (
-                                            ""
-                                        )}
                                     </NavDropdown>
                                 )}
                             </Nav>
