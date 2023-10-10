@@ -7,6 +7,8 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Login from "./layouts/Login";
 import Post from "./layouts/Post";
+import PostConfig from "./admin/PostConfig";
+import NewPost from "./admin/NewPost";
 
 export const MyUserContext = createContext();
 
@@ -25,6 +27,9 @@ const App = () => {
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/posts/:postId" element={<Post/>} />
+                    
+                    <Route path="/admin/posts/new" element={<NewPost/>} />
+                    <Route path="/admin/posts/:postId" element={<PostConfig/>} />
                 </Routes>
                 
                 <Footer/>

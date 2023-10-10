@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { MyUserContext } from "../App";
-import { Link, useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import MySpinner from "../components/MySpinner";
 import { Container, Image } from "react-bootstrap";
 import QuillHtmlRender from "../components/QuillHtmlRender";

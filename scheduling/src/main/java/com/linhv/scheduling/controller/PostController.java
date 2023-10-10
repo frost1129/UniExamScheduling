@@ -33,10 +33,16 @@ public class PostController {
         return new ResponseEntity<>(this.postService.getById(id), HttpStatus.OK);
     }
 
-    @PostMapping(value = "/create", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+    @PostMapping(value = "/create/", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public ResponseEntity<String> createPost(@ModelAttribute Post post) {
         this.postService.newPost(post);
         return new ResponseEntity<>("created", HttpStatus.CREATED);
+    }
+
+    @PutMapping(value = "/update/{postId}", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+    public ResponseEntity<String> updatePost(@PathVariable(value = "postId") String id, @ModelAttribute Post post) {
+        this.postService.updatePost(id, post);
+        return new ResponseEntity<>("updated", HttpStatus.NO_CONTENT);
     }
 
     @DeleteMapping("/delete/{postId}")

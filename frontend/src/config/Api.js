@@ -13,6 +13,9 @@ export const endpoints = {
     
     "top-posts": `${SERVER_CONTEXT}/posts/top-5/`,
     "post-detail": (postId) => `${SERVER_CONTEXT}/posts/${postId}`,
+    "new-post": `${SERVER_CONTEXT}/posts/create/`,
+    "update-post": (postId) => `${SERVER_CONTEXT}/posts/update/${postId}`,
+    "delete-post": (postId) => `${SERVER_CONTEXT}/posts/delete/${postId}`,
 }
 
 export const authApi = () => {
