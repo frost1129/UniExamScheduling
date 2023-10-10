@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Api, { endpoints } from "../config/Api";
 import { useNavigate } from "react-router-dom";
 import { Alert, Button, Form, InputGroup } from "react-bootstrap";
@@ -16,10 +16,13 @@ const NewPost = () => {
         content: "",
     });
 
+    const [admissionType, setAdmissionType] = useState([]);
+
     const [post, setPost] = useState({
         "title": "", 
         "image": "",
-        "content": "",  
+        "content": "", 
+        "admissionType": "" 
     });
 
     const modules = {
@@ -74,11 +77,22 @@ const NewPost = () => {
     };
 
     const handleContentChange = (content) => {
-        setPost(prevPost => ({
-          ...prevPost,
-          content: content
-        }));
-      };
+            setPost(prevPost => ({
+            ...prevPost,
+            content: content
+            }));
+        };
+
+    useEffect(() => {
+        const loadAdmissionType = async () => {
+            let {data} = await Api.get(endpoints["admissions"]);
+            setAdmissionType(data);
+        }
+
+        loadAdmissionType();
+    }, []);
+
+    if (admissionType === null || admissionType.length === 0) return <MySpinner/>;
 
     return (
         <div className="d-flex justify-content-center m-4">
@@ -96,6 +110,21 @@ const NewPost = () => {
                 <Form.Group className="mb-2">
                     <Form.Label>Tiêu đề bài đăng</Form.Label>
                     <Form.Control onChange={(e) => change(e, "title")} type="text" placeholder="Nhập tiêu đề bài viết ở đây" required/>
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                    <Form.Label>Hệ đào tạo</Form.Label>
+                    <Form.Select 
+                        name="admissionType" 
+                        value={post.admissionType} 
+                        onChange={(e) => change(e, "admissionType")} 
+                        required
+                    >
+                        <option selected><i>Chọn hệ đào tạo muốn đặt câu hỏi</i></option>
+                        {admissionType.map(type => 
+                            <option value={type.id}>{type.name}</option>
+                        )}
+                    </Form.Select>
                 </Form.Group>
 
                 <Form.Group className="mb-3">
