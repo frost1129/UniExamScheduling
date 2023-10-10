@@ -24,7 +24,6 @@ public class TokenService {
         Instant now = Instant.now();
         String scope = authentication.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
-                .filter(authority -> authority.startsWith("ROLE"))
                 .collect(Collectors.joining(" "));
 
         JwtClaimsSet claims = JwtClaimsSet.builder()
@@ -32,7 +31,7 @@ public class TokenService {
                 .issuedAt(now)
                 .expiresAt(now.plus(12, ChronoUnit.HOURS))
                 .subject(authentication.getName())
-                .claim("role", scope)
+                .claim("scope", scope)
                 .build();
 
         var encoderParameters = JwtEncoderParameters.from(JwsHeader.with(MacAlgorithm.HS256).build(), claims);
