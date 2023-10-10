@@ -1,16 +1,22 @@
 package com.linhv.scheduling.controller;
 
+import com.linhv.scheduling.model.Account;
 import com.linhv.scheduling.model.User;
 import com.linhv.scheduling.repository.FacultyRepository;
 import com.linhv.scheduling.service.AccountService;
 import com.linhv.scheduling.service.CourseService;
+import com.linhv.scheduling.service.TokenService;
 import com.linhv.scheduling.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -30,9 +36,15 @@ public class TestController {
     @Autowired
     AccountService accountService;
 
+    @Autowired
+    TokenService tokenService;
+
+    @Autowired
+    DaoAuthenticationProvider authProvider;
+
     @GetMapping("/")
-    public String index() {
-        return "Hello world!";
+    public String index(Principal principal) {
+        return "Hello, " + principal.getName();
     }
 
     @GetMapping("/import")
@@ -60,5 +72,16 @@ public class TestController {
         if (userService.deleteUser(userId))
             return "deleted";
         return "not deleted";
+    }
+
+    @PostMapping("/token")
+    public String token(Authentication authentication) {
+        return tokenService.generateToken(authentication);
+    }
+
+    @PostMapping("/login")
+    public String login(@RequestBody Account account) {
+        Authentication authenticated = authProvider.authenticate(new UsernamePasswordAuthenticationToken(account.getId(), account.getPassword()));
+        return this.tokenService.generateToken(authenticated);
     }
 }
