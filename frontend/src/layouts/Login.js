@@ -4,6 +4,8 @@ import { Navigate } from "react-router-dom";
 import { Alert, Button, Container, Form, Image, InputGroup, Row } from "react-bootstrap";
 import ImgLogin from "../images/login_img.png";
 import "./login.css";
+import cookie from "react-cookies";
+import Api, { authApi, endpoints } from "../config/Api";
 
 const Login = () => {
     const [user, dispatch] = useContext(MyUserContext);
@@ -14,7 +16,7 @@ const Login = () => {
     const [u, setU] = useState({
         id: "",
         password: "",
-        type: "",
+        // type: "",
     });
 
     const [userType, setUserType] = useState([
@@ -33,31 +35,31 @@ const Login = () => {
     const login = (evt) => {
         evt.preventDefault();
 
-        // const process = async () => {
-        //     try {
-        //         let res = await Api.post(endpoints["login"], {
-        //             email: u.email,
-        //             password: u.password,
-        //         });
-        //         cookie.save("token", res.data);
+        const process = async () => {
+            try {
+                let res = await Api.post(endpoints["login"], {
+                    id: u.id,
+                    password: u.password,
+                });
+                cookie.save("token", res.data);
 
-        //         let { data } = await authApi().get(endpoints["current-user"]);
-        //         cookie.save("user", data);
-        //         console.log(data);
+                let { data } = await authApi().get(endpoints["current-user"]);
+                cookie.save("user", data);
+                console.log(data);
 
-        //         dispatch({
-        //             type: "login",
-        //             payload: data,
-        //         });
-        //     } catch (ex) {
-        //         console.error(ex);
-        //         loadNotify("danger", "Tên tài khoản hoặc mật khẩu không đúng");
-        //     }
-        // };
-        // if (u.email === "") loadNotify("warning", "Vui lòng nhập email");
-        // else if (u.password === "")
-        //     loadNotify("warning", "Vui lòng nhập mật khẩu");
-        // else process();
+                dispatch({
+                    type: "login",
+                    payload: data,
+                });
+            } catch (ex) {
+                console.error(ex);
+                loadNotify("danger", "Tên tài khoản hoặc mật khẩu không đúng");
+            }
+        };
+        if (u.email === "") loadNotify("warning", "Vui lòng nhập ID");
+        else if (u.password === "")
+            loadNotify("warning", "Vui lòng nhập mật khẩu");
+        else process();
     };
 
     const change = (evt, field) => {
@@ -91,7 +93,7 @@ const Login = () => {
                             </Alert>
                         )}
 
-                        <Form.Group className="mb-3">
+                        {/* <Form.Group className="mb-3">
                             <Form.Select 
                                 name="userType" 
                                 value={u.type} 
@@ -103,7 +105,7 @@ const Login = () => {
                                     <option value={type.id}>{type.text}</option>
                                 )}
                             </Form.Select>
-                        </Form.Group>
+                        </Form.Group> */}
 
                         <InputGroup className="mb-3 text-primary-emphasis">
                             <input

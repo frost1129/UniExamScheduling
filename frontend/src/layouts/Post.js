@@ -4,29 +4,16 @@ import { Link, useParams } from "react-router-dom";
 import MySpinner from "../components/MySpinner";
 import { Container, Image } from "react-bootstrap";
 import QuillHtmlRender from "../components/QuillHtmlRender";
-import { formatTimestamp } from "../config/Timestamp";
+import { formatTimestamp } from "../config/TimeStamp";
+import Api, { endpoints } from "../config/Api";
 
 const Post = () => {
-    const [user] = useContext(MyUserContext);
     const [post, setPost] = useState(null);
     const { postId } = useParams();
 
-    const [loading, setLoading] = useState(false);
-    const [notify, setNotify] = useState({
-        variant: "",
-        content: "",
-    });
-
-    const loadNotify = (variant, content) => {
-        setNotify({
-            variant: variant,
-            content: content,
-        });
-    };
-
     useEffect(() => {
         const loadPostDetai = async () => {
-            let { data } = await Api.get(endpoints["post-details"](postId));
+            let { data } = await Api.get(endpoints["post-detail"](postId));
             const formattedDate = formatTimestamp(data.updatedDate);
             setPost({
                 ...data,
@@ -35,7 +22,7 @@ const Post = () => {
         };
 
         loadPostDetai();
-    }, [postId, loading]);
+    }, [postId]);
 
     if (post === null) return <MySpinner />;
 
@@ -56,9 +43,11 @@ const Post = () => {
                     <p className="text-muted fst-italic">
                         Được đăng vào {post.updatedDate}
                     </p>
-                    <Link className="badge bg-secondary text-decoration-none link-light">
-                        {post.admissionType.name}
-                    </Link>
+                    {post.admissionType !== null && 
+                        <p className="badge bg-secondary text-decoration-none link-light">
+                            {post.admissionType.name}
+                        </p>
+                    }
                 </header>
 
                 <section className="my-4">

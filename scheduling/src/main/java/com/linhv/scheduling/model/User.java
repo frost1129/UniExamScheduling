@@ -47,6 +47,9 @@ public class User {
     @Column(name = "sequence_num")
     private Long sequenceNum;
 
+    @Transient
+    private String image;
+
 //    STUDENT ONLY
 //    @Column(name = "year_admit")
 //    private int yearAdmit;

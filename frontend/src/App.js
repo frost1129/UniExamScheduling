@@ -6,6 +6,7 @@ import cookie from "react-cookies";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Login from "./layouts/Login";
+import Post from "./layouts/Post";
 
 export const MyUserContext = createContext();
 
@@ -23,6 +24,7 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/posts/:postId" element={<Post/>} />
                 </Routes>
                 
                 <Footer/>

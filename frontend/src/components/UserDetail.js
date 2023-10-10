@@ -1,9 +1,12 @@
 import React, { useContext } from "react";
 import { Button, Form, Image, Modal } from "react-bootstrap";
 import { MyUserContext } from "../App";
+import MySpinner from "./MySpinner";
 
 const UserDetail = ({ onClose }) => {
     const [user] = useContext(MyUserContext);
+
+    if (user === null) return <MySpinner/>;
 
     return (
         <Modal
