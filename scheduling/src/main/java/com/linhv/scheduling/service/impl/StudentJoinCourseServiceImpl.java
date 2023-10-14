@@ -2,6 +2,7 @@ package com.linhv.scheduling.service.impl;
 
 import com.linhv.scheduling.model.CourseSchedule;
 import com.linhv.scheduling.model.StudentJoinCourse;
+import com.linhv.scheduling.model.User;
 import com.linhv.scheduling.repository.StudentJoinCourseRepository;
 import com.linhv.scheduling.service.CourseScheduleService;
 import com.linhv.scheduling.service.StudentJoinCourseService;
@@ -20,6 +21,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 @Service
 public class StudentJoinCourseServiceImpl implements StudentJoinCourseService {
@@ -46,6 +48,14 @@ public class StudentJoinCourseServiceImpl implements StudentJoinCourseService {
     @Override
     public List<StudentJoinCourse> getAllByCourse(String courseId) {
         return joinRepo.findByCourseSchedule_ScheduleId(courseId);
+    }
+
+    @Override
+    public List<User> getAllUserByCourse(String courseId) {
+        List<StudentJoinCourse> joins = this.getAllByCourse(courseId);
+        return joins.stream()
+                .map(StudentJoinCourse::getStudent)
+                .collect(Collectors.toList());
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.linhv.scheduling.service;
 
 import com.linhv.scheduling.model.StudentJoinCourse;
+import com.linhv.scheduling.model.User;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -14,6 +15,7 @@ public interface StudentJoinCourseService {
     StudentJoinCourse getById(Long id);
     List<StudentJoinCourse> getAllByStudent(Long studentId);
     List<StudentJoinCourse> getAllByCourse(String courseId);
+    List<User> getAllUserByCourse(String courseId);
 
 //    CREATE
     StudentJoinCourse newJoin(StudentJoinCourse join);

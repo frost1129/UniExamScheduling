@@ -32,4 +32,8 @@ public class StudentJoinCourse {
     @ManyToOne
     @JoinColumn(name = "course_schedule")
     private CourseSchedule courseSchedule;
+
+    public boolean isEqualStudent(StudentJoinCourse sjc) {
+        return this.student == sjc.getStudent();
+    }
 }

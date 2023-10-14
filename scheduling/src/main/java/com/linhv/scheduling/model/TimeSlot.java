@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "time_slot")
@@ -21,4 +22,8 @@ public class TimeSlot {
     @Column(name = "fromTime")
     @Temporal(TemporalType.TIME)
     private Date fromTime;
+
+    public boolean isRightAfter(TimeSlot slot2) {
+        return Objects.equals(this.id, slot2.getId() + 1L) || Objects.equals(this.id + 1L, slot2.getId());
+    }
 }

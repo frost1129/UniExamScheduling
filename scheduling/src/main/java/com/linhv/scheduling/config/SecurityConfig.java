@@ -1,5 +1,6 @@
 package com.linhv.scheduling.config;
 
+import com.linhv.scheduling.ga.GeneticAlgorithm;
 import com.nimbusds.jose.jwk.source.ImmutableSecret;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -35,6 +36,11 @@ public class SecurityConfig {
 
     @Autowired
     private BCryptPasswordEncoder encoder;
+
+    @Bean
+    public GeneticAlgorithm geneticAlgorithm() {
+        return new GeneticAlgorithm();
+    }
 
     @Bean
     public DaoAuthenticationProvider provider() {

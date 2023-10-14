@@ -29,4 +29,10 @@ public class ScheduledExam {
     @OneToOne
     @JoinColumn(name = "scheduleId")
     private CourseSchedule courseSchedule;
+
+    public ScheduledExam(ScheduledExam scheduledExam) {
+        this.examDate = scheduledExam.getExamDate();
+        this.timeSlot = scheduledExam.getTimeSlot();
+        this.courseSchedule = scheduledExam.getCourseSchedule();
+    }
 }
