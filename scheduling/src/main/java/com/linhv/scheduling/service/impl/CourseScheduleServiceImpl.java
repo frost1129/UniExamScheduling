@@ -10,9 +10,15 @@ import com.linhv.scheduling.service.CourseScheduleService;
 import com.linhv.scheduling.service.CourseService;
 import com.linhv.scheduling.service.FacultyService;
 import com.linhv.scheduling.service.UserService;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.*;
+import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -62,6 +68,38 @@ public class CourseScheduleServiceImpl implements CourseScheduleService {
     @Override
     public CourseSchedule newSchedule(CourseSchedule cs) {
         return scheduleRepo.save(cs);
+    }
+
+    @Override
+    public void importScheduleFromCsv(MultipartFile file, int yearCode, Date dateStart) throws IOException {
+        if (!file.isEmpty()) {
+            // Chuyển MultipartFile thành InputStream
+            InputStream inputStream = file.getInputStream();
+
+            // Đọc dữ liệu từ InputStream bằng OpenCSV
+            Reader reader = new BufferedReader(new InputStreamReader(inputStream));
+            CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.withFirstRecordAsHeader());
+
+            for (CSVRecord csvRecord : csvParser) {
+//                System.out.println(csvRecord.get("scheduleId"));
+                CourseSchedule schedule = new CourseSchedule();
+                schedule.setCourseLength(10);
+                schedule.setSessionLength(1);
+                schedule.setYearCode(yearCode);
+                schedule.setDateStart(dateStart);
+
+                schedule.setScheduleId(String.format("%s-%d", csvRecord.get("scheduleId"), yearCode));
+                schedule.setWeekday(Integer.parseInt(csvRecord.get("day")));
+                schedule.setSessionStart(Integer.parseInt(csvRecord.get("sessionS")));
+                schedule.setCourse(this.courseService.getById(csvRecord.get("courseId")));
+                schedule.setFaculty(this.facultyService.getById(Long.parseLong(csvRecord.get("facultyId"))));
+                schedule.setTeacher(this.userService.getUserById(Long.parseLong(csvRecord.get("teacherId"))));
+
+                this.scheduleRepo.save(schedule);
+            }
+            csvParser.close();
+            reader.close();
+        }
     }
 
     @Override

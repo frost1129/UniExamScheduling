@@ -1,7 +1,10 @@
 package com.linhv.scheduling.service;
 
 import com.linhv.scheduling.model.CourseSchedule;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 public interface CourseScheduleService {
@@ -15,6 +18,7 @@ public interface CourseScheduleService {
 
 //    CREATE
     CourseSchedule newSchedule(CourseSchedule cs);
+    void importScheduleFromCsv(MultipartFile file, int yearCode, Date dateStart) throws IOException;
 
 //    UPDATE
     CourseSchedule updateSchedule(String id, CourseSchedule cs);
