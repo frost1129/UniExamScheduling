@@ -1,5 +1,5 @@
 import React from "react";
-import { Table } from "react-bootstrap-icons";
+import { Table } from "react-bootstrap";
 
 const AdminPost = () => {
     return (

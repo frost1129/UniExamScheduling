@@ -44,8 +44,8 @@ public class TestController {
     DaoAuthenticationProvider authProvider;
 
     @GetMapping("/")
-    public String index(Principal principal) {
-        return "Hello, " + principal.getName();
+    public String index() {
+        return "Hello, ";
     }
 
     @GetMapping("/import")

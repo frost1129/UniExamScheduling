@@ -9,6 +9,7 @@ public interface UserService {
 
 //    READ
     List<User> getAllUser();
+    List<User> getAllByRoleAndFacultyId(String role, Long facultyId);
     List<User> getAllTeacherByFacultyId(Long facultyId);
     List<User> getAllStudentByFacultyId(Long facultyId);
     User getUserById(Long id);

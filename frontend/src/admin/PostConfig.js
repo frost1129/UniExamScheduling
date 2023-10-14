@@ -3,7 +3,7 @@ import { Alert, Button, Container, Form, InputGroup } from "react-bootstrap";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { useNavigate, useParams } from "react-router-dom";
-import Api, { endpoints } from "../config/Api";
+import Api, { authApi, endpoints } from "../config/Api";
 import MySpinner from "../components/MySpinner";
 import { MyUserContext } from "../App";
 
@@ -64,7 +64,7 @@ const PostConfig = () => {
 
             setLoading(true);
 
-            let res = await Api.put(endpoints["update-post"](postId), form);
+            let res = await authApi().put(endpoints["update-post"](postId), form);
             if (res.status === 204) {
                 nav("/");
             } else

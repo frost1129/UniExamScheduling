@@ -50,8 +50,8 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/login").permitAll()
-                        .requestMatchers("/users").hasAuthority("SCOPE_ROLE_ADMIN")
                         .anyRequest().permitAll()
+//                        .requestMatchers("/users").hasAuthority("SCOPE_ROLE_ADMIN")
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
                 .sessionManagement(session -> session

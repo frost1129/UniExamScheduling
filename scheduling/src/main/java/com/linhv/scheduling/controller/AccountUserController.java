@@ -2,6 +2,7 @@ package com.linhv.scheduling.controller;
 
 import com.linhv.scheduling.model.Account;
 import com.linhv.scheduling.model.User;
+import com.linhv.scheduling.model.dto.DTOFacultyRole;
 import com.linhv.scheduling.service.AccountService;
 import com.linhv.scheduling.service.TokenService;
 import com.linhv.scheduling.service.UserService;
@@ -14,6 +15,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
@@ -43,6 +45,11 @@ public class AccountUserController {
         Account account = this.accountService.getById(user.getId());
         user.setImage(account.getImage());
         return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
+    @PostMapping("/")
+    public ResponseEntity<List<User>> getAll(@RequestBody DTOFacultyRole data) {
+        return new ResponseEntity<>(this.userService.getAllByRoleAndFacultyId(data.getRole(), data.getFaculty().getId()), HttpStatus.OK);
     }
 
 }

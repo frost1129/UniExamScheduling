@@ -5,11 +5,13 @@ const SERVER_CONTEXT = "/api";
 const SERVER = "http://localhost:8080";
 
 export const endpoints = {
-    "info": `${SERVER_CONTEXT}/mist/admissions/`,
+    "admissions": `${SERVER_CONTEXT}/mist/admissions/`,
+    "faculties": `${SERVER_CONTEXT}/mist/faculties/`,
 
     
     "login": `${SERVER_CONTEXT}/users/login/`,
     "current-user": `${SERVER_CONTEXT}/users/current-user/`, 
+    "users": `${SERVER_CONTEXT}/users/`, 
     
     "top-posts": `${SERVER_CONTEXT}/posts/top-5/`,
     "post-detail": (postId) => `${SERVER_CONTEXT}/posts/${postId}`,

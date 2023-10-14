@@ -63,6 +63,7 @@ public class PostServiceImpl implements PostService {
 
 //        set post data
         post.setUpdatedDate(new Date());
+        post.setAdmin(post.getAdmin());
         uploadImage(post, post);
 
         return postRepo.save(post);
@@ -76,6 +77,7 @@ public class PostServiceImpl implements PostService {
             curPost.setContent(post.getContent());
             curPost.setUpdatedDate(new Date());
             curPost.setTitle(post.getTitle());
+            curPost.setAdmin(post.getAdmin());
             uploadImage(post, curPost);
 
             return this.postRepo.save(curPost);

@@ -41,6 +41,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> getAllByRoleAndFacultyId(String role, Long facultyId) {
+        Faculty faculty = facultyService.getById(facultyId);
+        return userRepo.findByFacultyAndRole(faculty, role);
+    }
+
+    @Override
     public List<User> getAllTeacherByFacultyId(Long facultyId) {
         Faculty faculty = facultyService.getById(facultyId);
         return userRepo.findByFacultyAndRole(faculty, User.TEACHER);

@@ -10,6 +10,7 @@ import Post from "./layouts/Post";
 import PostConfig from "./admin/PostConfig";
 import NewPost from "./admin/NewPost";
 import AdminPost from "./admin/AdminPost";
+import AdminUser from "./admin/AdminUser";
 
 export const MyUserContext = createContext();
 
@@ -33,7 +34,7 @@ const App = () => {
                     <Route path="/posts/:postId" element={<Post/>} />
                     
                     <Route path="/admin/posts" element={<AdminPost/>} />
-                    <Route path="/admin/users" element={<AdminPost/>} />
+                    <Route path="/admin/users" element={<AdminUser/>} />
                     <Route path="/admin/schedules" element={<AdminPost/>} />
                     <Route path="/admin/exams" element={<AdminPost/>} />
                     <Route path="/admin/posts/new" element={<NewPost/>} />

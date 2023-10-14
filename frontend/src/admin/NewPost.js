@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import Api, { endpoints } from "../config/Api";
+import Api, { authApi, endpoints } from "../config/Api";
 import { useNavigate } from "react-router-dom";
 import { Alert, Button, Form, InputGroup } from "react-bootstrap";
 import ReactQuill from "react-quill";
@@ -57,7 +57,7 @@ const NewPost = () => {
 
             setLoading(true)
 
-            let res = await Api.post(endpoints['new-post'], form);
+            let res = await authApi().post(endpoints['new-post'], form);
             if (res.status === 201) {
                 nav("/");
             } else
@@ -120,7 +120,7 @@ const NewPost = () => {
                         onChange={(e) => change(e, "admissionType")} 
                         required
                     >
-                        <option selected><i>Chọn hệ đào tạo muốn đặt câu hỏi</i></option>
+                        <option selected><i>Chọn hệ đào tạo</i></option>
                         {admissionType.map(type => 
                             <option value={type.id}>{type.name}</option>
                         )}
