@@ -4,6 +4,7 @@ import com.linhv.scheduling.model.*;
 import com.linhv.scheduling.service.CourseScheduleService;
 import com.linhv.scheduling.service.StudentJoinCourseService;
 import com.linhv.scheduling.service.TimeSlotService;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,7 @@ public class GeneticAlgorithm {
     @Autowired
     private StudentJoinCourseService joinService;
 
+    @Getter
     private ArrayList<DNA> population;
     private int totalFitness;
     private List<TimeSlot> timeslots;
@@ -36,9 +38,6 @@ public class GeneticAlgorithm {
             DNA newDNA = new DNA(startD, days, timeslots, schedules);
             this.population.add(newDNA);
         }
-
-        this.evaluatePopulation();
-        this.sortPopulationFromFitness();
     }
 
     public DNA getBestResult() {
@@ -51,9 +50,11 @@ public class GeneticAlgorithm {
 
     public void evaluatePopulation() {
         this.totalFitness = 0;
-        for (int i = 0; i < this.population.size(); i++) {
-            this.totalFitness += this.calcFitness(this.population.get(i));
+        for (DNA dna : this.population) {
+            this.totalFitness += this.calcFitness(dna);
         }
+
+        this.sortPopulationFromFitness();
     }
 
     public void sortPopulationFromFitness() {
@@ -61,6 +62,9 @@ public class GeneticAlgorithm {
     }
 
     public int calcFitness(DNA dna) {
+        if (dna.getFitness() != 1)
+            return 1;
+
         int point = 1;
 
         for (int i = 0; i < this.schedules.size() - 1; i++) {
@@ -70,9 +74,9 @@ public class GeneticAlgorithm {
                 ScheduledExam exam2 = dna.getExamSchedules().get(this.schedules.get(j).getScheduleId());
 
 //                Check sv có 2 môn thi cùng 1 ngày
-                if (exam1.getExamDate() == exam2.getExamDate()) {
+                if (exam1.getExamDate().equals(exam2.getExamDate())) {
 //                    Check sv nào thi 2 môn cùng lúc
-                    if (exam1.getTimeSlot() == exam2.getTimeSlot()) {
+                    if (exam1.getTimeSlot().equals(exam2.getTimeSlot())) {
                         for (User student1 : this.joinService.getAllUserByCourse(exam1.getCourseSchedule().getScheduleId())) {
                             if (this.joinService.getAllUserByCourse(exam2.getCourseSchedule().getScheduleId()).contains(student1))
                                 point += 2;

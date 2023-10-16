@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Col, Container, Form, Row, Table } from "react-bootstrap";
+import { Button, Col, Container, Form, Row, Table } from "react-bootstrap";
 import { PencilFill, Trash2Fill } from "react-bootstrap-icons";
 import MySpinner from "../components/MySpinner";
 import Api, { endpoints } from "../config/Api";
+import AddUser from "../components/AddUser";
+import AddSchedule from "../components/AddSchedule";
+import AddRegister from "../components/AddRegister";
+import GA from "../components/GA";
 
 const AdminUser = () => {
     const [users, setUsers] = useState(null);
@@ -65,6 +69,10 @@ const AdminUser = () => {
         <Container className="col-xl-10 col-9 p-2">
             <h3>Quản lý người dùng</h3>
 
+            {/* <Row className="mb-3 text-start "> */}
+            <Button variant="outline-success" type="button" className="mb-3">Thêm người dùng</Button>
+            {/* </Row> */}
+
             <Row className="mb-3">
                 <Form.Group as={Col}>
                 <Form.Label>Khoa</Form.Label>
@@ -90,7 +98,7 @@ const AdminUser = () => {
 
             <Table striped bordered hover>
             <thead>
-                <tr>
+                <tr className="text-center">
                     <th>Id</th>
                     <th>Họ và tên đệm</th>
                     <th>Tên</th>
@@ -105,12 +113,17 @@ const AdminUser = () => {
                     <td>{user.lastName}</td>
                     <td>{user.firstName}</td>
                     <td>{user.gender}</td>
-                    <td><PencilFill/> <Trash2Fill/></td>
+                    <td className="text-center "><PencilFill/> <Trash2Fill/></td>
                 </tr>
                     )}
             </tbody>
             </Table>  
         </Container>  
+        
+        {/* <AddUser/> */}
+        {/* <AddSchedule/> */}
+        {/* <AddRegister/> */}
+        {/* <GA/> */}
     </div>
     );
 };

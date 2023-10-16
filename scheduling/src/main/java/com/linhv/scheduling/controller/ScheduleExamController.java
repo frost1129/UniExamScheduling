@@ -1,5 +1,6 @@
 package com.linhv.scheduling.controller;
 
+import com.linhv.scheduling.ga.DNA;
 import com.linhv.scheduling.ga.GeneticAlgorithm;
 import com.linhv.scheduling.service.ScheduledExamService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,12 @@ public class ScheduleExamController {
     public ResponseEntity<String> testSchedule() {
         this.GA.initAlgorithm(201, new Date(), 7, 20);
         this.GA.evaluatePopulation();
-        System.out.println(this.GA.getWorstResult().getFitness());
+
+        System.out.println("random parent: ");
+        for (DNA dna : this.GA.getPopulation()) {
+            System.out.println(dna.getFitness());
+        }
+
         return new ResponseEntity<>("test", HttpStatus.OK);
     }
 }
