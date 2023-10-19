@@ -81,7 +81,7 @@ public class DNA {
                 c.setTime(this.startDate);
                 c.add(Calendar.DATE, random.nextInt(this.totalDays - 1) + 1);
                 Date randomDate = c.getTime();
-                TimeSlot randomTimeSlot = slots.get(random.nextInt(slots.size()) + 1);
+                TimeSlot randomTimeSlot = slots.get(random.nextInt(slots.size() - 1) + 1);
 
                 this.examSchedules.get(scheduleId).setTimeSlot(randomTimeSlot);
                 this.examSchedules.get(scheduleId).setExamDate(randomDate);

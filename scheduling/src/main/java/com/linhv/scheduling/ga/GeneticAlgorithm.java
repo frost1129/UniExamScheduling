@@ -6,7 +6,6 @@ import com.linhv.scheduling.service.StudentJoinCourseService;
 import com.linhv.scheduling.service.TimeSlotService;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -38,6 +37,8 @@ public class GeneticAlgorithm {
             DNA newDNA = new DNA(startD, days, timeslots, schedules);
             this.population.add(newDNA);
         }
+
+        this.evaluatePopulation();
     }
 
     public DNA getBestResult() {
@@ -111,13 +112,30 @@ public class GeneticAlgorithm {
         while (r > 0) {
             r = r - population.get(i).getProb();
             if (r > 0) i++;
+
+            if (i == population.size())
+                return population.get(0);
         }
 
         return population.get(i);
     }
 
-    public DNA doCrossOver(DNA p1, DNA p2) {
-        return new DNA(p1, p2, schedules);
+    public void doCrossOver(double multateRate) {
+        int initSize = population.size();
+        int keepSize = initSize / 2;
+
+        population.subList(keepSize, population.size()).clear();
+
+        while (population.size() < initSize) {
+            DNA p1 = randomParent();
+            DNA p2 = randomParent();
+
+            DNA child = new DNA(p1, p2, schedules);
+            this.doMutation(child, multateRate);
+            population.add(child);
+        }
+
+        this.evaluatePopulation();
     }
 
     public DNA doMutation(DNA dna, Double multationRate) {

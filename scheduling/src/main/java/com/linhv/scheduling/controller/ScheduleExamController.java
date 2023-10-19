@@ -23,15 +23,16 @@ public class ScheduleExamController {
     private GeneticAlgorithm GA;
 
     @GetMapping("/test/")
-    public ResponseEntity<String> testSchedule() {
+    public ResponseEntity<DNA> testSchedule() {
         this.GA.initAlgorithm(201, new Date(), 7, 20);
-        this.GA.evaluatePopulation();
 
-        System.out.println("random parent: ");
-        for (DNA dna : this.GA.getPopulation()) {
-            System.out.println(dna.getFitness());
+        System.out.println(this.GA.getBestResult().getFitness());
+
+        while (this.GA.getBestResult().getFitness() > 1) {
+            this.GA.doCrossOver(0.1);
         }
+        System.out.println(this.GA.getBestResult().getFitness());
 
-        return new ResponseEntity<>("test", HttpStatus.OK);
+        return new ResponseEntity<>(this.GA.getBestResult(), HttpStatus.OK);
     }
 }
