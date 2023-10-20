@@ -59,6 +59,11 @@ public class StudentJoinCourseServiceImpl implements StudentJoinCourseService {
     }
 
     @Override
+    public List<CourseSchedule> getAllScheduleByStudentAndYearCode(User student, int yearCode) {
+        return this.joinRepo.findCourseSchedulesByStudentAndYearCode(student, yearCode);
+    }
+
+    @Override
     public StudentJoinCourse newJoin(StudentJoinCourse join) {
         return joinRepo.save(join);
     }

@@ -15,6 +15,7 @@ public interface CourseScheduleService {
     List<CourseSchedule> getAllByYearCodeAndFaculty(int year, Long facultyId);
     List<CourseSchedule> getAllByYearCodeAndTeacher(int year, Long teacherId);
     List<CourseSchedule> getAllByYearCodeAndCourse(int year, String courseId);
+    List<Integer> findAllYearCodes();
 
 //    CREATE
     CourseSchedule newSchedule(CourseSchedule cs);

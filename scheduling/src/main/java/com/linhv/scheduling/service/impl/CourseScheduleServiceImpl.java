@@ -66,6 +66,11 @@ public class CourseScheduleServiceImpl implements CourseScheduleService {
     }
 
     @Override
+    public List<Integer> findAllYearCodes() {
+        return this.scheduleRepo.findAllYearCodes();
+    }
+
+    @Override
     public CourseSchedule newSchedule(CourseSchedule cs) {
         return scheduleRepo.save(cs);
     }

@@ -1,7 +1,9 @@
 package com.linhv.scheduling.service.impl;
 
 import com.linhv.scheduling.model.Course;
+import com.linhv.scheduling.model.Faculty;
 import com.linhv.scheduling.model.ScheduledExam;
+import com.linhv.scheduling.model.User;
 import com.linhv.scheduling.repository.ScheduledExamRepository;
 import com.linhv.scheduling.service.CourseService;
 import com.linhv.scheduling.service.ScheduledExamService;
@@ -35,6 +37,26 @@ public class ScheduledExamServiceImpl implements ScheduledExamService {
     public List<ScheduledExam> getExamByCourse(String courseId) {
         Course course = courseService.getById(courseId);
         return examRepo.findByCourseSchedule_Course(course);
+    }
+
+    @Override
+    public List<Integer> findAllYearCodes() {
+        return this.examRepo.findAllYearCodes();
+    }
+
+    @Override
+    public List<ScheduledExam> findScheduledExamsByStudentAndYearCode(User student, int yearCode) {
+        return this.examRepo.findScheduledExamsByStudentAndYearCode(student, yearCode);
+    }
+
+    @Override
+    public List<ScheduledExam> findScheduledExamsByFacultyAndYearCode(Faculty faculty, int yearCode) {
+        return this.examRepo.findScheduledExamsByFacultyAndYearCode(faculty, yearCode);
+    }
+
+    @Override
+    public List<ScheduledExam> findScheduledExamsByYearCode(int yearCode) {
+        return this.examRepo.findScheduledExamsByYearCode(yearCode);
     }
 
     @Override

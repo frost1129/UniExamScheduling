@@ -5,6 +5,7 @@ import com.linhv.scheduling.model.CourseSchedule;
 import com.linhv.scheduling.model.Faculty;
 import com.linhv.scheduling.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -15,4 +16,7 @@ public interface CourseScheduleRepository extends JpaRepository<CourseSchedule, 
     List<CourseSchedule> findByYearCodeAndFaculty(int yearCode, Faculty faculty);
     List<CourseSchedule> findByYearCodeAndTeacher(int yearCode, User teacher);
     List<CourseSchedule> findByYearCodeAndCourse(int yearCode, Course course);
+
+    @Query("SELECT DISTINCT cs.yearCode FROM CourseSchedule cs")
+    List<Integer> findAllYearCodes();
 }
