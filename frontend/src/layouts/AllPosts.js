@@ -86,7 +86,7 @@ const AllPosts = () => {
                     </InputGroup>
                 </Form>
 
-                {posts.length === 0 ? <Alert variant="warning">Không có bài viết nào với từ khóa này</Alert> : 
+                {posts.length === 0 ? <Alert variant="warning">Không có bài viết nào</Alert> : 
                     <Container className="mb-3">
                         {posts.map(post => 
                             <SearchPostItem key={post.id} post={post} />

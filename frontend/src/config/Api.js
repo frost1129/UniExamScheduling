@@ -5,15 +5,35 @@ const SERVER_CONTEXT = "/api";
 const SERVER = "http://localhost:8080";
 
 export const endpoints = {
+    // MIST
     "admissions": `${SERVER_CONTEXT}/mist/admissions/`,
+    "admission-detail": (typeId) => `${SERVER_CONTEXT}/mist/admissions/${typeId}`,
     "faculties": `${SERVER_CONTEXT}/mist/faculties/`,
+    "facultie-detail": (facultyId) => `${SERVER_CONTEXT}/mist/faculties/${facultyId}`,
+    "slots":`${SERVER_CONTEXT}/mist/slots/`,
+    "slot-detail": (slotId) => `${SERVER_CONTEXT}/mist/slots/${slotId}`,
 
+    // COURSE SCHEDULES
+    "upload-schedules": `${SERVER_CONTEXT}/api/schedules/upload/`,
+    "schedule-years": `${SERVER_CONTEXT}/api/schedules/getYearCodes/`,
+    "user-schedules": (yearCode) => `${SERVER_CONTEXT}/api/schedules/getByUserAndYear/${yearCode}`,
+    "faculty-schedules": `${SERVER_CONTEXT}/api/schedules/getByFacultyAndYear/`,
     
+    // SCHEDULED EXAMS
+    "exam-years": `${SERVER_CONTEXT}/api/exams/getYearCodes/`,
+    "year-exams": (yearCode) => `${SERVER_CONTEXT}/api/exams/getByYear/${yearCode}`,
+    "faculty-exams": `${SERVER_CONTEXT}/api/exams/getByFacultyAndYear/`,
+    
+    // STUDENT JOIN COURSES
+    "upload-registers": `${SERVER_CONTEXT}/api/course-register/upload/`,
+    
+    // USER & ACCOUNT
     "login": `${SERVER_CONTEXT}/users/login/`,
     "current-user": `${SERVER_CONTEXT}/users/current-user/`, 
     "users": `${SERVER_CONTEXT}/users/`, 
     "new-user": `${SERVER_CONTEXT}/users/new/`, 
     
+    // POST
     "all-posts": `${SERVER_CONTEXT}/posts/`,
     "top-posts": `${SERVER_CONTEXT}/posts/top-5/`,
     "post-detail": (postId) => `${SERVER_CONTEXT}/posts/${postId}`,

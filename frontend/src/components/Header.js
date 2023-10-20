@@ -102,14 +102,17 @@ const Header = () => {
                                             Thời khóa biểu
                                         </Link>
                                     </Nav.Link>
-                                    <Nav.Link>
-                                        <Link
-                                            to="/exams"
-                                            className="text-decoration-none text-dark"
-                                        >
-                                            Lịch thi
-                                        </Link>
-                                    </Nav.Link>
+                                    
+                                    {user.role === "ROLE_STUDENT" && 
+                                        <Nav.Link>
+                                            <Link
+                                                to="/exams"
+                                                className="text-decoration-none text-dark"
+                                            >
+                                                Lịch thi
+                                            </Link>
+                                        </Nav.Link>
+                                    }
                                     </>
                                 }
                                 
