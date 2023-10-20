@@ -49,5 +49,6 @@ public class CourseSchedule {
     private User teacher;
 
     @OneToOne(mappedBy = "courseSchedule")
+    @JsonIgnore
     private ScheduledExam scheduledExam;
 }

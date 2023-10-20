@@ -88,6 +88,7 @@ const Schedules = () => {
                         )
                     }
                     events={courses}
+                    kw="schedule"
                 />
             )}
         </Container>

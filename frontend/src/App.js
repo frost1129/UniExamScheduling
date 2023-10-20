@@ -14,6 +14,8 @@ import AdminUser from "./admin/AdminUser";
 import Schedules from "./layouts/Schedules";
 import Exams from "./layouts/Exams";
 import AllPosts from "./layouts/AllPosts";
+import AdminSchedules from "./admin/AdminSchedules";
+import AdminExams from "./admin/AdminExams";
 
 export const MyUserContext = createContext();
 
@@ -38,8 +40,8 @@ const App = () => {
                     
                     <Route path="/admin/posts" element={<AdminPost/>} />
                     <Route path="/admin/users" element={<AdminUser/>} />
-                    <Route path="/admin/schedules" element={<AdminPost/>} />
-                    <Route path="/admin/exams" element={<AdminPost/>} />
+                    <Route path="/admin/schedules" element={<AdminSchedules/>} />
+                    <Route path="/admin/exams" element={<AdminExams/>} />
                     <Route path="/admin/posts/new" element={<NewPost/>} />
                     <Route path="/admin/posts/:postId" element={<PostConfig/>} />
                 </Routes>

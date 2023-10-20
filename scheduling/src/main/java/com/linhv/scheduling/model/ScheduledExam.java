@@ -28,7 +28,6 @@ public class ScheduledExam {
 
     @OneToOne
     @JoinColumn(name = "scheduleId")
-    @JsonIgnore
     private CourseSchedule courseSchedule;
 
     public ScheduledExam(ScheduledExam scheduledExam) {

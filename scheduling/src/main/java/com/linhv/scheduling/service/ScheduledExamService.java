@@ -18,6 +18,8 @@ public interface ScheduledExamService {
     List<ScheduledExam> findScheduledExamsByStudentAndYearCode(User student, int yearCode);
     List<ScheduledExam> findScheduledExamsByFacultyAndYearCode(Faculty faculty, int yearCode);
     List<ScheduledExam> findScheduledExamsByYearCode(int yearCode);
+    Date getLargestDay(int yearCode);
+    Date getSmallestDay(int yearCode);
 
 //    CREATE
     ScheduledExam newExam(ScheduledExam exam);

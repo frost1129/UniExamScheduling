@@ -3,10 +3,10 @@ import { Alert, Button, Table } from "react-bootstrap";
 import ExamSlot from "./ExamSlot";
 import { CaretLeftFill, CaretRightFill } from "react-bootstrap-icons";
 import MySpinner from "./MySpinner";
-import { calculateWeek } from "../config/TimeStamp";
+import { calculateWeek, getDMY } from "../config/TimeStamp";
 // import "./weekcalendar.css";
 
-const WeekCalendar = ({ startDate, endDate, events }) => {
+const WeekCalendar = ({ startDate, endDate, events, kw }) => {
     const [weeks, setWeeks] = useState(null);
 
     const sessionsList = ["Ca 1", "Ca 2", "Ca 3", "Ca 4", "Ca 5"];
@@ -101,7 +101,7 @@ const WeekCalendar = ({ startDate, endDate, events }) => {
                     </tr>
                 </thead>
                 {/* Table Body */}
-                {events.course !== null ? (
+                {kw === "schedule" && (
                     <tbody className="text-center ">
                         {sessionsList.map((session, index) => (
                             <tr key={index}>
@@ -114,7 +114,6 @@ const WeekCalendar = ({ startDate, endDate, events }) => {
                                             const eventStartDayOfWeek = convertToDayOfWeek(event.weekday) // 0: Chủ Nhật, 1: Thứ Hai, ..., 6: Thứ Bảy
                                             const targetDayOfWeek = new Date(day).getDay();
                                             
-                                            console.log(eventStartDayOfWeek === targetDayOfWeek);
                                             return (
                                                 eventStartDayOfWeek === dayIndex &&
                                                 parseInt(event.sessionStart) === parseInt(index) + 1
@@ -129,7 +128,7 @@ const WeekCalendar = ({ startDate, endDate, events }) => {
                                                         {matchingEvents.map(
                                                             (event, index) => (
                                                                 // Sử dụng component ExamSlot thay vì <div>
-                                                                <ExamSlot key={index} event={event}/>
+                                                                <ExamSlot key={index} event={event} kw="schedule"/>
                                                             )
                                                         )}
                                                     </div>
@@ -143,7 +142,8 @@ const WeekCalendar = ({ startDate, endDate, events }) => {
                             </tr>
                         ))}
                     </tbody>
-                ) : (
+                )}
+                {kw === "exam" && (
                     <tbody className="text-center ">
                         {sessionsList.map((session, index) => (
                             <tr key={index}>
@@ -153,8 +153,8 @@ const WeekCalendar = ({ startDate, endDate, events }) => {
                                     (day, dayIndex) => {
                                         const matchingEvents = events.filter(
                                             (event) =>
-                                                event.date === day &&
-                                                parseInt(event.session) === parseInt(index) + 1
+                                                getDMY(event.examDate) === day &&
+                                                parseInt(event.timeSlot.id) === parseInt(index) + 1
                                         );
 
                                         return (
@@ -164,12 +164,7 @@ const WeekCalendar = ({ startDate, endDate, events }) => {
                                                         {matchingEvents.map(
                                                             (event, index) => (
                                                                 // Sử dụng component ExamSlot thay vì <div>
-                                                                <ExamSlot
-                                                                    key={index}
-                                                                    event={
-                                                                        event
-                                                                    }
-                                                                />
+                                                                <ExamSlot key={index} event={event} kw="exam"/>
                                                             )
                                                         )}
                                                     </div>

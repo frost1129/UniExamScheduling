@@ -37,4 +37,10 @@ public interface ScheduledExamRepository extends JpaRepository<ScheduledExam, Lo
 
     @Query("SELECT se FROM ScheduledExam se WHERE se.courseSchedule.yearCode = :yearCode")
     List<ScheduledExam> findScheduledExamsByYearCode(@Param("yearCode") int yearCode);
+
+    @Query("SELECT MAX(se.examDate) FROM ScheduledExam se WHERE RIGHT(se.courseSchedule.scheduleId, 3) = :suffix")
+    Date findMaxExamDateWithCustomSuffix(@Param("suffix") String suffix);
+
+    @Query("SELECT MIN(se.examDate) FROM ScheduledExam se WHERE RIGHT(se.courseSchedule.scheduleId, 3) = :suffix")
+    Date findMinExamDateWithCustomSuffix(@Param("suffix") String suffix);
 }

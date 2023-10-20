@@ -23,6 +23,8 @@ export const endpoints = {
     "exam-years": `${SERVER_CONTEXT}/exams/getYearCodes/`,
     "year-exams": (yearCode) => `${SERVER_CONTEXT}/exams/getByYear/${yearCode}`,
     "faculty-exams": `${SERVER_CONTEXT}/exams/getByFacultyAndYear/`,
+    "min-date": (yearCode) => `${SERVER_CONTEXT}/exams/getMinDay/${yearCode}`,
+    "max-date": (yearCode) => `${SERVER_CONTEXT}/exams/getMaxDay/${yearCode}`,
     
     // STUDENT JOIN COURSES
     "upload-registers": `${SERVER_CONTEXT}/course-register/upload/`,

@@ -60,6 +60,16 @@ public class ScheduledExamServiceImpl implements ScheduledExamService {
     }
 
     @Override
+    public Date getLargestDay(int yearCode) {
+        return this.examRepo.findMaxExamDateWithCustomSuffix(String.valueOf(yearCode));
+    }
+
+    @Override
+    public Date getSmallestDay(int yearCode) {
+        return this.examRepo.findMinExamDateWithCustomSuffix(String.valueOf(yearCode));
+    }
+
+    @Override
     public ScheduledExam newExam(ScheduledExam exam) {
         return examRepo.save(exam);
     }
