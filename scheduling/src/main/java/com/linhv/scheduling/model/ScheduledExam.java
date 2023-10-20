@@ -1,15 +1,15 @@
 package com.linhv.scheduling.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Date;
 
 @Entity
 @Table
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class ScheduledExam {
@@ -28,6 +28,7 @@ public class ScheduledExam {
 
     @OneToOne
     @JoinColumn(name = "scheduleId")
+    @JsonIgnore
     private CourseSchedule courseSchedule;
 
     public ScheduledExam(ScheduledExam scheduledExam) {

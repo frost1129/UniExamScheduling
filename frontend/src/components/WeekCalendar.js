@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Table } from "react-bootstrap";
+import { Alert, Button, Table } from "react-bootstrap";
 import ExamSlot from "./ExamSlot";
 import { CaretLeftFill, CaretRightFill } from "react-bootstrap-icons";
 import MySpinner from "./MySpinner";
@@ -8,7 +8,7 @@ import { calculateWeek } from "../config/TimeStamp";
 
 const WeekCalendar = ({ startDate, endDate, events }) => {
     const [weeks, setWeeks] = useState(null);
-    
+
     const sessionsList = ["Ca 1", "Ca 2", "Ca 3", "Ca 4", "Ca 5"];
     const housrsList = ["7:00", "9:30", "13:00", "15:30", "18:00"];
     const weekday = [
@@ -24,13 +24,18 @@ const WeekCalendar = ({ startDate, endDate, events }) => {
 
     useEffect(() => {
         const weekDates = calculateWeek(startDate, endDate);
-    
+
         const newWeeks = [];
         for (let i = 0; i < weekDates.length; i += 7) {
             newWeeks.push(weekDates.slice(i, i + 7));
         }
         setWeeks(newWeeks);
     }, [startDate, endDate]);
+
+    const convertToDayOfWeek = (number) => {
+        // Chuyển số từ 2 đến 8 thành ngày trong tuần (0: Chủ Nhật, 1: Thứ Hai, ..., 6: Thứ Bảy)
+        return (number === 8) ? 0 : number - 1;
+    }
 
     const handlePrevWeek = () => {
         if (currentWeekIndex > 0) {
@@ -96,42 +101,89 @@ const WeekCalendar = ({ startDate, endDate, events }) => {
                     </tr>
                 </thead>
                 {/* Table Body */}
-                <tbody className="text-center ">
-                    {sessionsList.map((session, index) => (
-                        <tr key={index}>
-                            <td>{session}</td>
+                {events.course !== null ? (
+                    <tbody className="text-center ">
+                        {sessionsList.map((session, index) => (
+                            <tr key={index}>
+                                <td>{session}</td>
 
-                            {weeks[currentWeekIndex].map((day, dayIndex) => {
-                                const matchingEvents = events.filter(
-                                    (event) =>
-                                        event.date === day &&
-                                        parseInt(event.session) ===
-                                            parseInt(index) + 1
-                                );
+                                {weeks[currentWeekIndex].map(
+                                    (day, dayIndex) => {
+                                        const matchingEvents = events.filter((event) => {
+                                            const eventStartDate = new Date(event.startDate);
+                                            const eventStartDayOfWeek = convertToDayOfWeek(event.weekday) // 0: Chủ Nhật, 1: Thứ Hai, ..., 6: Thứ Bảy
+                                            const targetDayOfWeek = new Date(day).getDay();
+                                            
+                                            console.log(eventStartDayOfWeek === targetDayOfWeek);
+                                            return (
+                                                eventStartDayOfWeek === dayIndex &&
+                                                parseInt(event.sessionStart) === parseInt(index) + 1
+                                                // && new Date(day) < eventStartDate
+                                            )
+                                        });
 
-                                return (
-                                    <td key={dayIndex}>
-                                        {matchingEvents.length > 0 ? (
-                                            <div className="event-cell">
-                                                {matchingEvents.map(
-                                                    (event, index) => (
-                                                        // Sử dụng component ExamSlot thay vì <div>
-                                                        <ExamSlot
-                                                            key={index}
-                                                            event={event}
-                                                        />
-                                                    )
-                                                )}
-                                            </div>
-                                        ) : null}
-                                    </td>
-                                );
-                            })}
+                                        return (
+                                            <td key={dayIndex}>
+                                                {matchingEvents.length > 0 ? (
+                                                    <div className="event-cell">
+                                                        {matchingEvents.map(
+                                                            (event, index) => (
+                                                                // Sử dụng component ExamSlot thay vì <div>
+                                                                <ExamSlot key={index} event={event}/>
+                                                            )
+                                                        )}
+                                                    </div>
+                                                ) : null}
+                                            </td>
+                                        );
+                                    }
+                                )}
 
-                            <td>{housrsList[index]}</td>
-                        </tr>
-                    ))}
-                </tbody>
+                                <td>{housrsList[index]}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                ) : (
+                    <tbody className="text-center ">
+                        {sessionsList.map((session, index) => (
+                            <tr key={index}>
+                                <td>{session}</td>
+
+                                {weeks[currentWeekIndex].map(
+                                    (day, dayIndex) => {
+                                        const matchingEvents = events.filter(
+                                            (event) =>
+                                                event.date === day &&
+                                                parseInt(event.session) === parseInt(index) + 1
+                                        );
+
+                                        return (
+                                            <td key={dayIndex}>
+                                                {matchingEvents.length > 0 ? (
+                                                    <div className="event-cell">
+                                                        {matchingEvents.map(
+                                                            (event, index) => (
+                                                                // Sử dụng component ExamSlot thay vì <div>
+                                                                <ExamSlot
+                                                                    key={index}
+                                                                    event={
+                                                                        event
+                                                                    }
+                                                                />
+                                                            )
+                                                        )}
+                                                    </div>
+                                                ) : null}
+                                            </td>
+                                        );
+                                    }
+                                )}
+
+                                <td>{housrsList[index]}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                )}
             </Table>
         </div>
     );

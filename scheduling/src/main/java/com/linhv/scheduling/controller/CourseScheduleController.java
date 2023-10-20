@@ -1,10 +1,8 @@
 package com.linhv.scheduling.controller;
 
 import com.linhv.scheduling.model.CourseSchedule;
-import com.linhv.scheduling.model.Faculty;
 import com.linhv.scheduling.model.User;
 import com.linhv.scheduling.service.CourseScheduleService;
-import com.linhv.scheduling.service.FacultyService;
 import com.linhv.scheduling.service.StudentJoinCourseService;
 import com.linhv.scheduling.service.UserService;
 import org.apache.commons.csv.CSVFormat;
@@ -21,6 +19,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.security.Principal;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -75,7 +74,7 @@ public class CourseScheduleController {
             return new ResponseEntity<>(this.joinService.getAllScheduleByStudentAndYearCode(user, yearCode), HttpStatus.OK);
 
         // admin không có course-schedule
-        return new ResponseEntity<>(null, HttpStatus.OK);
+        return new ResponseEntity<>(Collections.emptyList(), HttpStatus.OK);
     }
 
     @GetMapping("/getYearCodes/")

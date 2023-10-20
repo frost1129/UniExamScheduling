@@ -14,18 +14,18 @@ export const endpoints = {
     "slot-detail": (slotId) => `${SERVER_CONTEXT}/mist/slots/${slotId}`,
 
     // COURSE SCHEDULES
-    "upload-schedules": `${SERVER_CONTEXT}/api/schedules/upload/`,
-    "schedule-years": `${SERVER_CONTEXT}/api/schedules/getYearCodes/`,
-    "user-schedules": (yearCode) => `${SERVER_CONTEXT}/api/schedules/getByUserAndYear/${yearCode}`,
-    "faculty-schedules": `${SERVER_CONTEXT}/api/schedules/getByFacultyAndYear/`,
+    "upload-schedules": `${SERVER_CONTEXT}/schedules/upload/`,
+    "schedule-years": `${SERVER_CONTEXT}/schedules/getYearCodes/`,
+    "user-schedules": (yearCode) => `${SERVER_CONTEXT}/schedules/getByUserAndYear/${yearCode}`,
+    "faculty-schedules": `${SERVER_CONTEXT}/schedules/getByFacultyAndYear/`,
     
     // SCHEDULED EXAMS
-    "exam-years": `${SERVER_CONTEXT}/api/exams/getYearCodes/`,
-    "year-exams": (yearCode) => `${SERVER_CONTEXT}/api/exams/getByYear/${yearCode}`,
-    "faculty-exams": `${SERVER_CONTEXT}/api/exams/getByFacultyAndYear/`,
+    "exam-years": `${SERVER_CONTEXT}/exams/getYearCodes/`,
+    "year-exams": (yearCode) => `${SERVER_CONTEXT}/exams/getByYear/${yearCode}`,
+    "faculty-exams": `${SERVER_CONTEXT}/exams/getByFacultyAndYear/`,
     
     // STUDENT JOIN COURSES
-    "upload-registers": `${SERVER_CONTEXT}/api/course-register/upload/`,
+    "upload-registers": `${SERVER_CONTEXT}/course-register/upload/`,
     
     // USER & ACCOUNT
     "login": `${SERVER_CONTEXT}/users/login/`,

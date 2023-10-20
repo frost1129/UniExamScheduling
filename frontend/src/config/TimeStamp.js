@@ -40,7 +40,7 @@ export const calculateWeek = (startDate, endDate) => {
     const finalDate = new Date(getSundayOfWeek(endDate));
 
     while (currentDate <= finalDate) {
-        const formattedDate = getDate(currentDate);
+        const formattedDate = getDMY(currentDate);
         dateList.push(formattedDate);
 
         // Tăng ngày hiện tại lên 1 để kiểm tra ngày tiếp theo
@@ -74,7 +74,7 @@ const getSundayOfWeek = (inputDate) => {
     return sundayDate;
 };
 
-const convertYearCode = (yearCode) => {
+export const convertYearCode = (yearCode) => {
     if (typeof(yearCode) !== 'number')
         return "Input không hợp lệ";
 

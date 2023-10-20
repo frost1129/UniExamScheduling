@@ -65,6 +65,11 @@ public class ScheduledExamServiceImpl implements ScheduledExamService {
     }
 
     @Override
+    public void saveAllScheduledExams(List<ScheduledExam> scheduledExams) {
+        examRepo.saveAll(scheduledExams);
+    }
+
+    @Override
     public ScheduledExam updateExam(Long id, ScheduledExam exam) {
         return null;
     }

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { MyUserContext } from "../App";
 import UserDetail from "./UserDetail";
 import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
@@ -140,6 +140,7 @@ const Header = () => {
                                         </NavDropdown.Item>
                                         <NavDropdown.Item>
                                             <Link
+                                                to="/"
                                                 onClick={logout}
                                                 className="text-decoration-none text-dark"
                                             >

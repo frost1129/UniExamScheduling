@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -29,7 +31,7 @@ public class ScheduleExamController {
 
     @GetMapping("/test/")
     public ResponseEntity<DNA> testSchedule() {
-        this.GA.initAlgorithm(201, new Date(), 7, 20);
+        this.GA.initAlgorithm(201, new Date(2021, Calendar.SEPTEMBER, 19), 7, 20);
 
         System.out.println(this.GA.getBestResult().getFitness());
 
@@ -37,6 +39,9 @@ public class ScheduleExamController {
             this.GA.doCrossOver(0.1);
         }
         System.out.println(this.GA.getBestResult().getFitness());
+
+        List<ScheduledExam> scheduledExams = new ArrayList<>(this.GA.getBestResult().getExamSchedules().values());
+        this.examService.saveAllScheduledExams(scheduledExams);
 
         return new ResponseEntity<>(this.GA.getBestResult(), HttpStatus.OK);
     }

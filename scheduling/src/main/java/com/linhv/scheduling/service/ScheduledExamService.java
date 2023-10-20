@@ -21,6 +21,7 @@ public interface ScheduledExamService {
 
 //    CREATE
     ScheduledExam newExam(ScheduledExam exam);
+    void saveAllScheduledExams(List<ScheduledExam> scheduledExams);
 
 //    UPDATE
     ScheduledExam updateExam(Long id, ScheduledExam exam);
