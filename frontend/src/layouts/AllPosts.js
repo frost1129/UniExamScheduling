@@ -4,6 +4,8 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import MySpinner from "../components/MySpinner";
 import SearchPostItem from "../components/SearchPostItem";
 import { Search } from "react-bootstrap-icons";
+import Api, { endpoints } from "../config/Api";
+import { formatTimestamp } from "../config/TimeStamp";
 
 const AllPosts = () => {
     const [posts, setPosts] = useState(null);
@@ -41,64 +43,26 @@ const AllPosts = () => {
     }
 
     useEffect(() => {
-        const loadCounter = async () => {
-            // let e = endpoints["posts-count"];
-            // e = `${e}?`
-
-            // let admissionType = q.get("admissionType");
-            // if (admissionType !== null)
-            //     e = `${e}admissionType=${admissionType}`;
-
-            // let searchKw = q.get("kw");
-            // if (searchKw !== null) {
-            //     e = `${e}&kw=${searchKw}`;
-            // }
-
-            // let resCount = await Api.get(e);
-            // setCounter(resCount.data);
-        }
-
         const loadPosts = async () => {
-            // try {
-            //     let e = endpoints["posts"];
-            //     e = `${e}?`
+            try {
+                let res = await Api.get(endpoints["all-posts"]);
 
-            //     let admissionType = q.get("admissionType");
-            //     if (admissionType !== null)
-            //         e = `${e}admissionType=${admissionType}`;
+                const formattedData = res.data.map(post => ({
+                    ...post,
+                    updatedDate: formatTimestamp(post.updatedDate),
+                }));
 
-            //     let searchKw = q.get("kw");
-            //     if (searchKw !== null) {
-            //         e = `${e}&kw=${searchKw}`;
-            //     }
-
-            //     let paging = q.get("page");
-            //     if (paging !== null) 
-            //         e = `${e}&page=${paging}`;
-            //     else 
-            //         e = `${e}&page=1`;
-
-
-            //     let res = await Api.get(e);
-
-            //     const formattedData = res.data.map(post => ({
-            //         ...post,
-            //         updatedDate: formatTimestamp(post.updatedDate),
-            //     }));
-
-            //     setPosts(formattedData);
-            // } catch (ex) {
-            //     console.error(ex);
-            // }
+                setPosts(formattedData);
+            } catch (ex) {
+                console.error(ex);
+            }
         }
 
         loadPosts();
-        loadCounter();
-        setKw("");
     }, [q]);
 
 
-    if (posts === null || counter === null) return <MySpinner />;
+    if (posts === null) return <MySpinner />;
 
     return (
         <Container className="bg-white">

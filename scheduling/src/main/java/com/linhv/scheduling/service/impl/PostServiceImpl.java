@@ -41,7 +41,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public List<Post> getAll(Map<String, String> params) {
-        return null;
+        return postRepo.findAll();
     }
 
     @Override

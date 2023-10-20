@@ -16,12 +16,11 @@ const SearchPostItem = ({ post }) => {
                         <Card.Title className="text-primary link-opacity-75-hover">
                             {post.title}
                         </Card.Title>
-                        <Card.Subtitle className="mb-2">
+                        {/* <Card.Subtitle className="mb-2">
                             {post.admissionType.name}
-                        </Card.Subtitle>
+                        </Card.Subtitle> */}
                         <Card.Text className="text-black">
-                            <Calendar />
-                            {post.updatedDate}
+                            <Calendar /> {post.updatedDate}
                         </Card.Text>
                     </Card.Body>
                 </Row>

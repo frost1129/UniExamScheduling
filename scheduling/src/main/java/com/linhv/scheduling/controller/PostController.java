@@ -24,7 +24,7 @@ public class PostController {
     @Autowired
     private UserService userService;
 
-    @GetMapping
+    @GetMapping("/")
     public ResponseEntity<List<Post>> getPosts(@RequestParam Map<String, String> params) {
         return new ResponseEntity<>(this.postService.getAll(params), HttpStatus.OK);
     }

@@ -37,7 +37,7 @@ export const getDMY = (timestamp) => {
 export const calculateWeek = (startDate, endDate) => {
     const dateList = [];
     const currentDate = new Date(getMondayOfWeek(startDate));
-    const finalDate = new Date(getSundayOfWeek(endDate))
+    const finalDate = new Date(getSundayOfWeek(endDate));
 
     while (currentDate <= finalDate) {
         const formattedDate = getDate(currentDate);
@@ -67,9 +67,19 @@ const getSundayOfWeek = (inputDate) => {
     const date = new Date(inputDate);
     const dayOfWeek = date.getDay();
     const sundayDate = new Date(date);
-    
+
     // Chuyển ngày hiện tại đến Chủ Nhật của tuần
     sundayDate.setDate(date.getDate() - dayOfWeek + 7);
-  
+
     return sundayDate;
-  };
+};
+
+const convertYearCode = (yearCode) => {
+    if (typeof(yearCode) !== 'number')
+        return "Input không hợp lệ";
+
+    const year = Math.floor(yearCode/10);
+    const semester = yearCode % 10;
+
+    return `Học kỳ ${semester}, Năm 20${year} - 20${year+1}`;
+}

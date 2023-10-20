@@ -79,7 +79,7 @@ const News = () => {
                     )}
 
                     <Row className="my-1">
-                        <Link to='/posts?admissionType=1' className="text-decoration-none text-center text-uppercase">
+                        <Link to='/posts' className="text-decoration-none text-center text-uppercase">
                             <small>Xem tất cả</small>
                         </Link>
                     </Row>

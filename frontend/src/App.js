@@ -13,6 +13,7 @@ import AdminPost from "./admin/AdminPost";
 import AdminUser from "./admin/AdminUser";
 import Schedules from "./layouts/Schedules";
 import Exams from "./layouts/Exams";
+import AllPosts from "./layouts/AllPosts";
 
 export const MyUserContext = createContext();
 
@@ -32,7 +33,7 @@ const App = () => {
                     <Route path="/login" element={<Login />} />
                     <Route path="/schedules" element={<Schedules />} />
                     <Route path="/exams" element={<Exams />} />
-                    <Route path="/posts" element={<Login />} />
+                    <Route path="/posts" element={<AllPosts />} />
                     <Route path="/posts/:postId" element={<Post/>} />
                     
                     <Route path="/admin/posts" element={<AdminPost/>} />

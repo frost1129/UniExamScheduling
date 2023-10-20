@@ -52,4 +52,9 @@ public class AccountUserController {
         return new ResponseEntity<>(this.userService.getAllByRoleAndFacultyId(data.getRole(), data.getFaculty().getId()), HttpStatus.OK);
     }
 
+    @PostMapping("/new/")
+    public ResponseEntity<User> addUser(@ModelAttribute User user) {
+        return new ResponseEntity<>(this.userService.createUser(user), HttpStatus.CREATED);
+    }
+
 }

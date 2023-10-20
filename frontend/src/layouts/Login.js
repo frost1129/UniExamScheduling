@@ -22,7 +22,7 @@ const Login = () => {
     const [userType, setUserType] = useState([
         { id: "STUDENT", text: "Sinh viên"},
         { id: "TEACHER", text: "Giảng viên"},
-        { id: "ADMIN", text: "Cán bộ (Admin)"}
+        { id: "ADMIN", text: "Admin"}
     ]);
 
     const loadNotify = (variant, content) => {
@@ -45,14 +45,14 @@ const Login = () => {
 
                 let { data } = await authApi().get(endpoints["current-user"]);
                 cookie.save("user", data);
-                console.log(data);
+                // console.log(data);
 
                 dispatch({
                     type: "login",
                     payload: data,
                 });
             } catch (ex) {
-                console.error(ex);
+                // console.error(ex);
                 loadNotify("danger", "Tên tài khoản hoặc mật khẩu không đúng");
             }
         };

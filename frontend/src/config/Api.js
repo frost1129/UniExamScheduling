@@ -12,7 +12,9 @@ export const endpoints = {
     "login": `${SERVER_CONTEXT}/users/login/`,
     "current-user": `${SERVER_CONTEXT}/users/current-user/`, 
     "users": `${SERVER_CONTEXT}/users/`, 
+    "new-user": `${SERVER_CONTEXT}/users/new/`, 
     
+    "all-posts": `${SERVER_CONTEXT}/posts/`,
     "top-posts": `${SERVER_CONTEXT}/posts/top-5/`,
     "post-detail": (postId) => `${SERVER_CONTEXT}/posts/${postId}`,
     "new-post": `${SERVER_CONTEXT}/posts/create/`,

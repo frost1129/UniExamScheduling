@@ -11,6 +11,7 @@ import GA from "../components/GA";
 const AdminUser = () => {
     const [users, setUsers] = useState(null);
     const [faculties, setFaculties] = useState(null);
+    const [showAddUser, setShowAddUser] = useState(false);
     const [roles, ] = useState([
         // { id: "ROLE_ADMIN", title: "Admin" },
         { id: "ROLE_STUDENT", title: "Sinh viên" },
@@ -19,6 +20,10 @@ const AdminUser = () => {
 
     const [curFaculty, setCurFaculty] = useState(null);
     const [curRole, setCurRole] = useState(null);
+
+    const handleShowAddUser = () => {
+        setShowAddUser(true);
+    };
 
     useEffect(() => {
         const loadFaculties = async () => {
@@ -70,7 +75,9 @@ const AdminUser = () => {
             <h3>Quản lý người dùng</h3>
 
             {/* <Row className="mb-3 text-start "> */}
-            <Button variant="outline-success" type="button" className="mb-3">Thêm người dùng</Button>
+            <Button variant="outline-success" type="button" className="mb-3" onClick={handleShowAddUser}>
+                Thêm người dùng
+            </Button>
             {/* </Row> */}
 
             <Row className="mb-3">
@@ -120,10 +127,9 @@ const AdminUser = () => {
             </Table>  
         </Container>  
         
-        {/* <AddUser/> */}
-        {/* <AddSchedule/> */}
-        {/* <AddRegister/> */}
-        {/* <GA/> */}
+        {showAddUser && (
+            <AddUser faculties={faculties} onClose={() => setShowAddUser(false)}/>
+        )}
     </div>
     );
 };
