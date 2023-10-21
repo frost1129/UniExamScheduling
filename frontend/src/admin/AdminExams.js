@@ -2,19 +2,21 @@ import React, { useEffect, useState } from "react";
 import Api, { endpoints } from "../config/Api";
 import MySpinner from "../components/MySpinner";
 import { Alert, Button, Col, Container, Form, Row, Table } from "react-bootstrap";
-import { convertYearCode } from "../config/TimeStamp";
+import { convertYearCode, getDMY } from "../config/TimeStamp";
+import GA from "../components/GA";
 
 const AdminExams = () => {
     const [schedules, setSchedules] = useState(null);
     const [faculties, setFaculties] = useState(null);
     const [semesters, setSemesters] = useState(null);
-    const [showAddSchedule, setShowAddSchedule] = useState(false);
+    const [showAddGA, setShowAddGA] = useState(false);
+    const [preview, setPreview] = useState(null);
 
     const [curFaculty, setCurFaculty] = useState(null);
     const [curSe, setCurSe] = useState(null);
 
-    const handleShowAddSchedule = () => {
-        setShowAddSchedule(true);
+    const handleShowAddGA = () => {
+        setShowAddGA(true);
     };
 
     const handleFacultyChange = (e) => {
@@ -62,7 +64,7 @@ const AdminExams = () => {
             };
     
             try {
-                const response = await Api.get(endpoints["faculty-schedules"], {
+                const response = await Api.get(endpoints["faculty-exams"], {
                     params: params,
                 });
     
@@ -82,15 +84,15 @@ const AdminExams = () => {
     return (
         <div className="d-flex justify-content-center">
             <Container className="col-xl-10 col-9 p-2">
-                <h3>Quản lý thời khóa biểu</h3>
+                <h3>Quản lý lịch thi</h3>
 
                 <Button
                     variant="outline-success"
                     type="button"
                     className="mb-3"
-                    onClick={handleShowAddSchedule}
+                    onClick={handleShowAddGA}
                 >
-                    Import thời khóa biểu
+                    GA - Tạo lịch thi tự động
                 </Button>
 
                 <Row className="mb-3">
@@ -128,37 +130,37 @@ const AdminExams = () => {
                         <thead>
                             <tr className="text-center">
                                 <th>Mã thời khóa biểu</th>
-                                <th>Thứ</th>
-                                <th>Tiết bắt đầu</th>
                                 <th>Tên môn</th>
-                                <th>Giảng viên</th>
+                                <th>Ngày thi</th>
+                                <th>Ca thi</th>
                             </tr>
                         </thead>
                         <tbody>
                             {schedules.map((s) => (
-                                <tr key={s.scheduleId}>
-                                    <td className="text-center">{s.scheduleId}</td>
-                                    <td className="text-center">{s.weekday}</td>
-                                    <td className="text-center">{s.sessionStart}</td>
-                                    <td>{s.course.name}</td>
-                                    <td>{s.teacher.lastName} {s.teacher.firstName}</td>
+                                <tr key={s.id}>
+                                    <td className="text-center">{s.courseSchedule.scheduleId}</td>
+                                    <td>{s.courseSchedule.course.name}</td>
+                                    <td className="text-center">{getDMY(s.examDate)}</td>
+                                    <td className="text-center">{s.timeSlot.id}</td>
                                 </tr>
                             ))}
                         </tbody>
                     </Table>
                 ) : (
                     <Alert variant="warning">
-                        Hiện chưa có thông tin lịch thi
+                        Hiện chưa có thông tin lịch thi cho khoa tại học kỳ này!
                     </Alert>
                 )}
             </Container>
 
-            {/* {showAddSchedule && (
-                <Add
+            {showAddGA && (
+                <GA
                     semesters={semesters}
-                    onClose={() => setShowAddSchedule(false)}
+                    setPreview={setPreview}
+                    onClose={() => setShowAddGA(false)}
                 />
-            )} */}
+            )}
+            {/* <PreviewExams/> */}
         </div>
     );
 };

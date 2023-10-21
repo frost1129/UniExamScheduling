@@ -20,6 +20,8 @@ export const endpoints = {
     "faculty-schedules": `${SERVER_CONTEXT}/schedules/getByFacultyAndYear/`,
     
     // SCHEDULED EXAMS
+    "implement-GA": `${SERVER_CONTEXT}/exams/implementGA/`,
+    "add-exam-schedules": `${SERVER_CONTEXT}/exams/addExamSchedule/`,
     "exam-years": `${SERVER_CONTEXT}/exams/getYearCodes/`,
     "year-exams": (yearCode) => `${SERVER_CONTEXT}/exams/getByYear/${yearCode}`,
     "faculty-exams": `${SERVER_CONTEXT}/exams/getByFacultyAndYear/`,

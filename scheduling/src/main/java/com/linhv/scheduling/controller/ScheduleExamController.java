@@ -5,13 +5,16 @@ import com.linhv.scheduling.ga.GeneticAlgorithm;
 import com.linhv.scheduling.model.Faculty;
 import com.linhv.scheduling.model.ScheduledExam;
 import com.linhv.scheduling.model.User;
+import com.linhv.scheduling.model.dto.SchedulingRequestDTO;
 import com.linhv.scheduling.service.FacultyService;
 import com.linhv.scheduling.service.ScheduledExamService;
 import com.linhv.scheduling.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.security.Principal;
 import java.text.ParseException;
@@ -50,11 +53,43 @@ public class ScheduleExamController {
             this.GA.doCrossOver(0.1);
         }
         System.out.println(this.GA.getBestResult().getFitness());
+//
+//        List<ScheduledExam> scheduledExams = new ArrayList<>(this.GA.getBestResult().getExamSchedules().values());
+//        this.examService.saveAllScheduledExams(scheduledExams);
+
+        return new ResponseEntity<>(this.GA.getBestResult(), HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/implementGA/",
+            produces = {MediaType.APPLICATION_JSON_VALUE},
+            consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+    public ResponseEntity<DNA> scheduling(@ModelAttribute SchedulingRequestDTO request) throws ParseException {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        this.GA.initAlgorithm(request.getYearCode(), dateFormat.parse(request.getDate()), request.getLength(), request.getSize());
+
+        System.out.println(this.GA.getBestResult().getFitness());
+
+        while (this.GA.getBestResult().getFitness() > 1) {
+            this.GA.doCrossOver(request.getMutationRate());
+        }
+
+        System.out.println(this.GA.getBestResult().getFitness());
 
         List<ScheduledExam> scheduledExams = new ArrayList<>(this.GA.getBestResult().getExamSchedules().values());
         this.examService.saveAllScheduledExams(scheduledExams);
 
+//        List<ScheduledExam> scheduledExams = new ArrayList<>(this.GA.getBestResult().getExamSchedules().values());
+//        this.examService.saveAllScheduledExams(scheduledExams);
+
         return new ResponseEntity<>(this.GA.getBestResult(), HttpStatus.OK);
+    }
+
+    @PostMapping("/addExamSchedule/")
+    public ResponseEntity<String> addSchedule(@ModelAttribute DNA dna) {
+        List<ScheduledExam> scheduledExams = new ArrayList<>(dna.getExamSchedules().values());
+        this.examService.saveAllScheduledExams(scheduledExams);
+
+        return new ResponseEntity<>("Success", HttpStatus.CREATED);
     }
 
     @GetMapping("/getYearCodes/")

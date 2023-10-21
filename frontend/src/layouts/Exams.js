@@ -6,14 +6,6 @@ import Api, { authApi, endpoints } from "../config/Api";
 import { convertYearCode } from "../config/TimeStamp";
 
 const Exams = () => {
-
-    const [events, setEvents] = useState([
-        { name: "GLAW1315-BT2102", date: "10/10", session: "1" },
-        { name: "BIOT2201-BT2102", date: "15/10", session: "1" },
-        { name: "POLI1205-BT2101", date: "17/10", session: "2" },
-        // Thêm các sự kiện khác theo cùng định dạng
-    ]);
-
     
     const [semesters, setSemesters] = useState(null);
     const [exams, setExams] = useState(null);
