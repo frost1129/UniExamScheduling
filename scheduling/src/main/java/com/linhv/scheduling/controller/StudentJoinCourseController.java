@@ -44,7 +44,7 @@ public class StudentJoinCourseController {
                 if (actualHeaders.equals(expectedHeaders)) {
                     // Nếu khớp header
                     this.joinService.importDataFromCsv(file, yearCode);
-                    return new ResponseEntity<>("Success!", HttpStatus.OK);
+                    return new ResponseEntity<>("Success!", HttpStatus.CREATED);
                 } else {
                     // Nếu không khớp header
                     return new ResponseEntity<>("Failed!", HttpStatus.BAD_REQUEST);

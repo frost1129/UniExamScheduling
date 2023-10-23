@@ -80,7 +80,7 @@ public class GeneticAlgorithm {
                     if (exam1.getTimeSlot().equals(exam2.getTimeSlot())) {
                         for (User student1 : this.joinService.getAllUserByCourse(exam1.getCourseSchedule().getScheduleId())) {
                             if (this.joinService.getAllUserByCourse(exam2.getCourseSchedule().getScheduleId()).contains(student1))
-                                point += 2;
+                                point += 4;
                         }
                     }
 //                    Check sv nào thi 2 môn liên tiếp

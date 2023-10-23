@@ -45,12 +45,12 @@ public class ScheduleExamController {
     @GetMapping("/test/")
     public ResponseEntity<DNA> testSchedule() throws ParseException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-        this.GA.initAlgorithm(201, dateFormat.parse("19-10-2021"), 7, 20);
+        this.GA.initAlgorithm(211, dateFormat.parse("19-01-2023"), 2, 20);
 
         System.out.println(this.GA.getBestResult().getFitness());
 
         while (this.GA.getBestResult().getFitness() > 1) {
-            this.GA.doCrossOver(0.1);
+            this.GA.doCrossOver(0.2);
         }
         System.out.println(this.GA.getBestResult().getFitness());
 //
@@ -69,8 +69,12 @@ public class ScheduleExamController {
 
         System.out.println(this.GA.getBestResult().getFitness());
 
+        int generation = 1;
+
         while (this.GA.getBestResult().getFitness() > 1) {
             this.GA.doCrossOver(request.getMutationRate());
+            if (generation++ == 100)
+                break;
         }
 
         System.out.println(this.GA.getBestResult().getFitness());

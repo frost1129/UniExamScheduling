@@ -32,6 +32,7 @@ const Exams = () => {
 
     useEffect(() => {
         if (curSe) {
+            console.log(curSe);
             const loadExams = async () => {
                 try {
                     let { data } = await authApi().get(endpoints["year-exams"](curSe));
@@ -43,8 +44,8 @@ const Exams = () => {
 
             const loadTime = async () => {
                 try {
-                    let maxD = await Api.get(endpoints["max-date"](201));
-                    let minD = await Api.get(endpoints["min-date"](201));
+                    let maxD = await Api.get(endpoints["max-date"](curSe));
+                    let minD = await Api.get(endpoints["min-date"](curSe));
                     
                     setMinDate(minD.data);
                     setMaxDate(maxD.data);
@@ -59,14 +60,19 @@ const Exams = () => {
     }, [curSe]);
 
     if (semesters === null || exams === null || minDate === null || maxDate === null) return <MySpinner />;
-    console.info(exams);
 
     return (
         <Container className="section col-md-10 mx-auto my-3 bg-white">
 
             <Form.Group className="mb-2 ">
                 <h3 className="text-center text-primary-emphasis text-uppercase ">Lịch thi học kỳ </h3>
-                <Form.Select className="w-50 text-center mx-auto" >
+                <Form.Select
+                    className="w-50 text-center mx-auto my-2"
+                    onChange={(event) => {
+                        setCurSe(event.target.value);
+                    }}
+                    value={curSe}
+                >
                     {semesters.map((se, index) => (
                         <option key={index} value={se}>
                             {convertYearCode(se)}

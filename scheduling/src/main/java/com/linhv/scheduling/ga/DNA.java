@@ -34,11 +34,12 @@ public class DNA {
 
             exam.setCourseSchedule(scheduleList.get(i));
 
-            exam.setTimeSlot(slots.get(random.nextInt(slots.size() - 1) + 1));
+            exam.setTimeSlot(slots.get(random.nextInt(slots.size() - 1 + 1)));
 
             Calendar c = Calendar.getInstance();
             c.setTime(this.startDate);
-            c.add(Calendar.DATE, random.nextInt(days - 1) + 1);
+            if (days != 1)
+                c.add(Calendar.DATE, random.nextInt(days - 1) + 1);
             exam.setExamDate(c.getTime());
 
             this.examSchedules.put(scheduleId, exam);
@@ -79,9 +80,10 @@ public class DNA {
 
                 Calendar c = Calendar.getInstance();
                 c.setTime(this.startDate);
-                c.add(Calendar.DATE, random.nextInt(this.totalDays - 1) + 1);
+                if (this.totalDays != 1)
+                    c.add(Calendar.DATE, random.nextInt(this.totalDays - 1) + 1);
                 Date randomDate = c.getTime();
-                TimeSlot randomTimeSlot = slots.get(random.nextInt(slots.size() - 1) + 1);
+                TimeSlot randomTimeSlot = slots.get(random.nextInt(slots.size() - 1 + 1));
 
                 this.examSchedules.get(scheduleId).setTimeSlot(randomTimeSlot);
                 this.examSchedules.get(scheduleId).setExamDate(randomDate);

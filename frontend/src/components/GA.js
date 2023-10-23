@@ -76,14 +76,14 @@ const GA = ({ semesters, onClose, setPreview }) => {
                     <Form>
                     <Form.Group className="mb-2">
                             <Form.Label>Học kỳ</Form.Label>
-                            {/* <Form.Select value={schedule.yearCode} onChange={(e) => change(e, "yearCode")} >
+                            <Form.Select value={schedule.yearCode} onChange={(e) => change(e, "yearCode")} >
                                 {semesters.map((se, index) => (
                                     <option key={index} value={se}>
                                         {convertYearCode(se)}
                                     </option>
                                 ))}
-                            </Form.Select> */}
-                            <Form.Control type="number" onChange={(e) => change(e, "yearCode")}/>
+                            </Form.Select>
+                            {/* <Form.Control type="number" onChange={(e) => change(e, "yearCode")}/> */}
                         </Form.Group>
                         <Form.Group className="mb-2">
                             <Form.Label>Ngày bắt đầu kỳ thi</Form.Label>
